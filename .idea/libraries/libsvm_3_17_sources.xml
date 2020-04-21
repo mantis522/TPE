@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="libsvm-3.17-sources">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$USER_HOME$/Downloads/libsvm-3.17-sources.jar" />
+    </SOURCES>
+    <jarDirectory url="file://$USER_HOME$/Downloads/libsvm-3.17-sources.jar" recursive="false" type="SOURCES" />
+  </library>
+</component>
