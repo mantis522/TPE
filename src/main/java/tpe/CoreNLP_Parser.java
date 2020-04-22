@@ -20,7 +20,7 @@ public class CoreNLP_Parser{
         StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
         // build annotation for a review
         Annotation annotation =
-                new Annotation("the wonderful scene with the physicists playing badmitton");
+                new Annotation("How many times have any of us been involved in an event remotely exciting?");
         // annotate
         pipeline.annotate(annotation);
         // get tree
