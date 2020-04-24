@@ -1,8 +1,7 @@
 package tpe;
 
-import tpe.datastructure.PairMatched;
-
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Main {
 
@@ -47,7 +46,7 @@ public class Main {
 //        String pattern = "<S <NP <NP * <(NN.*|PRP) .+> *> *> <VP <VB.* .+> <NP <NP * <NN.* .+> *> *> *> *>";    // part was scene -> 이건 일단 제외
 //        String pattern = "<S <NP <(NN.*|PRP) .+> *>  <VP <VB.* .+> <PP <IN .+> <NP <NN.* .+> * > *> * > *>"; // they waited for Robbins
 //        String pattern = "<S * <NP <PRP .+>> <VP <VB.* .+> <NP <NP *  <NN.* .+> *> *> *> *>"; // I loved sweaters
-//        String pattern = "<NP <NP * <JJ.* .+> <NN.* .+> *> <PP <IN .+> <NP * <VB.* .+> <NN.* .+> * > *> *>";    // wonderful scene with playing badmitton
+        String pattern = "<NP <NP * <JJ.* .+> <NN.* .+> *> <PP <IN .+> <NP * <VB.* .+> <NN.* .+> * > *> *>";    // wonderful scene with playing badmitton
 //        String pattern = "<VP * <VP <VB.* .+> <NP <PR.* .+> * >*> * <VP <VB.* .+> <PRT <RP.* .+> *> <PP <IN .+> <NP <PR.* .+> <NN.* .+> *> *> *>"; // make me go out of my way
 //        String pattern = "<S <NP <PR.* .+> *> <VP <VB.* .+> *> *>"; // I think SBAR
 //        String pattern = "<S <NP <PR.* .+> *> <VP <VB.* .+> <S.* <S  <NP <NP * <(NN.*|PRP) .+> *> *> *> *> *> *>";
@@ -56,21 +55,21 @@ public class Main {
 //        String pattern = "<S.* <S <NP <PRP .+ > *> *> *>";
 
 //        String pattern = "<NP * <VB.* .+> <NN.* .+> * > ";
-        String pattern = "<NP <DT.* .+> <JJ.* .+> <NN.* .+> *> ";
+//        String pattern = "<NP <DT.* .+> <JJ.* .+> <NN.* .+> *> ";
 
 //        String pattern = "";
 //        String sentence = "<ROOT <S <NP <PRP she>> <VP <VBZ is> <ADVP <RB so> <RB pretty>> <NP <NP <DT all>> <PP <IN over> <NP <DT the> <NN world>>>>> <. .>>>";
-        String sentence = "<ROOT <S <NP <PRP I>> <VP <VBP think> <SBAR <S <NP <NP <DT the> <NN majority>> <PP <IN of> <NP <DT the> <NNS people>>>> <VP <VBP seem> <S <NP <RB not> <DT the>> <VP <VB get> <NP <NP <DT the> <JJ right> <NN idea>> <PP <IN about> <NP <NP <DT the> <NN movie>> <, ,> <ADVP <IN at> <JJS least>> <SBAR <WHNP <DT that>> <S <VP <VBZ 's> <NP <PRP$ my> <NN opinion>>>>>>>>>>>>>> <. .>>>";
+//        String sentence = "<ROOT <S <NP <PRP I>> <VP <VBP think> <SBAR <S <NP <NP <DT the> <NN majority>> <PP <IN of> <NP <DT the> <NNS people>>>> <VP <VBP seem> <S <NP <RB not> <DT the>> <VP <VB get> <NP <NP <DT the> <JJ right> <NN idea>> <PP <IN about> <NP <NP <DT the> <NN movie>> <, ,> <ADVP <IN at> <JJS least>> <SBAR <WHNP <DT that>> <S <VP <VBZ 's> <NP <PRP$ my> <NN opinion>>>>>>>>>>>>>> <. .>>>";
 //        String sentence = "<ROOT <S <NP <PRP I>> <VP <VBP think> <SBAR <S <NP <PRP we>> <VP <VBP have> <NP <NP <DT a> <NN lot>> <PP <IN in> <NP <JJ common>>>>>>>> <. .>>>";
 //        String sentence = "<S <NP <PRP I>> <VP <VBP think> <SBAR <S <NP <NP <DT the> <NN majority>> <PP <IN of> <NP <DT the> <NNS people>>>> <VP <VBP seem> <S <NP <RB not> <DT the>> <VP <VB get> <NP <NP <DT the> <JJ right> <NN idea>> <PP <IN about> <NP <NP <DT the> <NN movie>> <, ,> <ADVP <IN at> <JJS least>> <SBAR <WHNP <DT that>> <S <VP <VBZ 's> <NP <PRP$ my> <NN opinion>>>>>>>>>>>>>> <. .>>";
-//        String sentence = "<ROOT <S <S <NP <NP <PRP$ My> <JJ favorite> <NN part>> <, ,> <CC and> <NP <NP <DT the> <JJ only> <NN thing>> <SBAR <WHNP <WDT that>> <S <VP <MD would> <VP <VB make> <NP <PRP me>>> <, ,> <VP <VB go> <PRT <RP out>> <PP <IN of> <NP <PRP$ my> <NN way> <S <VP <TO to> <VP <VB see> <NP <DT this>> <ADVP <RB again>>>>>>>>>>>> <, ,>> <VP <VBD was> <NP <NP <DT the> <JJ wonderful> <NN scene>> <PP <IN with> <NP <DT the> <NN physicists> <VBG playing> <NN badmitton>>>>>> <, ,> <NP <PRP I>> <VP <VBD loved> <NP <NP <DT the> <NNS sweaters>> <CC and> <NP <DT the> <NN conversation>>> <SBAR <IN while> <S <NP <PRP they>> <VP <VBD waited> <PP <IN for> <NP <NNP Robbins>>> <S <VP <TO to> <VP <VB retrieve> <NP <DT the> <NN birdie>>>>>>>>> <. .>>>";
+        String sentence = "<ROOT <S <S <NP <NP <PRP$ My> <JJ favorite> <NN part>> <, ,> <CC and> <NP <NP <DT the> <JJ only> <NN thing>> <SBAR <WHNP <WDT that>> <S <VP <MD would> <VP <VB make> <NP <PRP me>>> <, ,> <VP <VB go> <PRT <RP out>> <PP <IN of> <NP <PRP$ my> <NN way> <S <VP <TO to> <VP <VB see> <NP <DT this>> <ADVP <RB again>>>>>>>>>>>> <, ,>> <VP <VBD was> <NP <NP <DT the> <JJ wonderful> <NN scene>> <PP <IN with> <NP <DT the> <NN physicists> <VBG playing> <NN badmitton>>>>>> <, ,> <NP <PRP I>> <VP <VBD loved> <NP <NP <DT the> <NNS sweaters>> <CC and> <NP <DT the> <NN conversation>>> <SBAR <IN while> <S <NP <PRP they>> <VP <VBD waited> <PP <IN for> <NP <NNP Robbins>>> <S <VP <TO to> <VP <VB retrieve> <NP <DT the> <NN birdie>>>>>>>>> <. .>>>";
 
 
     	// 1.Define a pattern tree        
         Patterns p = new Patterns(pattern);
         
         // 2. Define a target tree
-        System.out.println("\n\nTarget Tree: ");
+//        System.out.println("\n\nTarget Tree: ");
         MakeTree tMT = new MakeTree();
         TPETree t = new TPETree();
         TreeNode tRoot = null;
@@ -84,36 +83,57 @@ public class Main {
         
         
         // 3. Try to match the pattern tree p to the target tree t.
-        System.out.println("\n\nMatched relations: ");
+//        System.out.println("\n\nMatched relations: ");
         String relation = null;
         try{
 	        relation = p.patternMatching(t);
 	        if (relation == null) return; // Not matched.
-	        
+
 	        System.out.println(relation);
         }catch(Exception e){
-        	System.err.println("main Exception -- patternMatching() part: "+e.getMessage());
+//        	System.err.println("main Exception -- patternMatching() part: "+e.getMessage());
         	return;
-        } 
+        }
         
         
         ////////////////////////////// Test session ////////////////////////////////
         // Print matched words
-        System.out.println("\n\nPrint matched words: ");
+
+        ArrayList<String> fruits = new ArrayList<String>();
+
+//        System.out.println("\n\nPrint matched words: ");
         String[] rel = relation.split("::");
+
         for(int i=0 ; i < rel.length; i++){
         	String rel2[] = rel[i].split(",");
         	if(rel2.length!=2) continue;
-        	System.out.print(rel[i]+" --> ");
-        	System.out.println(p.p.getIthNode(Integer.parseInt(rel2[0])).value+", "+t.getIthNode(Integer.parseInt(rel2[1])).value);
+//        	System.out.print(rel[i]+" --> ");
+//        	System.out.println(p.p.getIthNode(Integer.parseInt(rel2[0])).value+", "+t.getIthNode(Integer.parseInt(rel2[1])).value);
+
+            int to = Integer.parseInt(rel2[1]);
+
+            if(p.p.getIthNode(Integer.parseInt(rel2[0])).isLeafNode()){
+//                System.out.println(to + " -----> " + t.getIthNode(Integer.parseInt(rel2[1])).value);
+                fruits.add(t.getIthNode(Integer.parseInt(rel2[1])).value);
+
+            }
+
+//            System.out.print(t.getIthNode(Integer.parseInt(rel2[1])).value + " ");
         	//System.exit(0);
         }
-        
+
+        Collections.reverse(fruits);
+//        System.out.println(fruits);
         // Load matched words into array list
-        System.out.println("\n\nLoad matched words into array list: ");
-        ArrayList<PairMatched> list = null;
-        list = p.patternMatchingToList(t);
-        
+//        System.out.println("\n\nLoad matched words into array list: ");
+//        ArrayList<PairMatched> list = null;
+//        list = p.patternMatchingToList(t);
+        for(int index = 0; index < fruits.size(); index++){
+            System.out.print(fruits.get(index) + " ");
+        }
+
+
+
     }
 
 }
