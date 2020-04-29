@@ -153,7 +153,7 @@ public class TPETree {
             if(root != null){
                 for(int i=0; i < root.getChildren().size(); i++)
                     printPostOrderingOfNodes(root.getChildren().get(i));
-                System.out.print("["+root.getValue()+"]"+root.getNodeNo()+"->");
+//                System.out.print("["+root.getValue()+"]"+root.getNodeNo()+"->");
             }
         }catch(Exception e){
             System.err.println("printPostOrderingOfNodes error: "+e.getMessage());
@@ -171,7 +171,7 @@ public class TPETree {
             if(root != null){
                 for(int i=0; i < root.getChildren().size(); i++)
                 	printHeightOfNodes(root.getChildren().get(i));
-                System.out.print("["+root.getValue()+"](H="+root.getHeight()+")"+root.getNodeNo()+"->");
+//                System.out.print("["+root.getValue()+"](H="+root.getHeight()+")"+root.getNodeNo()+"->");
             }
         }catch(Exception e){
             System.err.println("printPostOrderingOfNodes error: "+e.getMessage());
@@ -183,7 +183,7 @@ public class TPETree {
             if(root != null){
                 for(int i=0; i < root.getChildren().size(); i++)
                 	printNodeTypeOfNodes(root.getChildren().get(i));
-                System.out.print("["+root.getValue()+"](T="+root.getNodeType()+")"+root.getNodeNo()+"->");
+//                System.out.print("["+root.getValue()+"](T="+root.getNodeType()+")"+root.getNodeNo()+"->");
             }
         }catch(Exception e){
             System.err.println("printPostOrderingOfNodes error: "+e.getMessage());

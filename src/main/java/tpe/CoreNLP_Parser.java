@@ -48,10 +48,10 @@ public class CoreNLP_Parser{
     }
 
 
-    public static void main(String[] args) {
-        CoreNLP_Parser parser = new CoreNLP_Parser();
-        String parsed_text = parser.Core_parser("she is so pretty all over the world.");
-
-        System.out.println(parsed_text);
-    }
+//    public static void main(String[] args) {
+//        CoreNLP_Parser parser = new CoreNLP_Parser();
+//        String parsed_text = parser.Core_parser("she is so pretty all over the world.");
+//
+//        System.out.println(parsed_text);
+//    }
 }

@@ -9,6 +9,8 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        CoreNLP_Parser Cparser = new CoreNLP_Parser();
+
     	/* 0. Input a TPE pattern sentence and a parsed sentence.
     	 *   - pattern: TPE pattern sentence
     	 *   - sentence: A parsed sentence (It can be obtained from the Stanford NLP full parser.)
@@ -52,8 +54,10 @@ public class Main {
 //        String sentence = "<ROOT <S <NP <PRP I>> <VP <VBP think> <SBAR <S <NP <NP <DT the> <NN majority>> <PP <IN of> <NP <DT the> <NNS people>>>> <VP <VBP seem> <S <NP <RB not> <DT the>> <VP <VB get> <NP <NP <DT the> <JJ right> <NN idea>> <PP <IN about> <NP <NP <DT the> <NN movie>> <, ,> <ADVP <IN at> <JJS least>> <SBAR <WHNP <DT that>> <S <VP <VBZ 's> <NP <PRP$ my> <NN opinion>>>>>>>>>>>>>> <. .>>>";
 //        String sentence = "<ROOT <S <NP <PRP I>> <VP <VBP think> <SBAR <S <NP <PRP we>> <VP <VBP have> <NP <NP <DT a> <NN lot>> <PP <IN in> <NP <JJ common>>>>>>>> <. .>>>";
 //        String sentence = "<S <NP <PRP I>> <VP <VBP think> <SBAR <S <NP <NP <DT the> <NN majority>> <PP <IN of> <NP <DT the> <NNS people>>>> <VP <VBP seem> <S <NP <RB not> <DT the>> <VP <VB get> <NP <NP <DT the> <JJ right> <NN idea>> <PP <IN about> <NP <NP <DT the> <NN movie>> <, ,> <ADVP <IN at> <JJS least>> <SBAR <WHNP <DT that>> <S <VP <VBZ 's> <NP <PRP$ my> <NN opinion>>>>>>>>>>>>>> <. .>>";
-        String sentence = "<ROOT <S <S <NP <NP <PRP$ My> <JJ favorite> <NN part>> <, ,> <CC and> <NP <NP <DT the> <JJ only> <NN thing>> <SBAR <WHNP <WDT that>> <S <VP <MD would> <VP <VB make> <NP <PRP me>>> <, ,> <VP <VB go> <PRT <RP out>> <PP <IN of> <NP <PRP$ my> <NN way> <S <VP <TO to> <VP <VB see> <NP <DT this>> <ADVP <RB again>>>>>>>>>>>> <, ,>> <VP <VBD was> <NP <NP <DT the> <JJ wonderful> <NN scene>> <PP <IN with> <NP <DT the> <NN physicists> <VBG playing> <NN badmitton>>>>>> <, ,> <NP <PRP I>> <VP <VBD loved> <NP <NP <DT the> <NNS sweaters>> <CC and> <NP <DT the> <NN conversation>>> <SBAR <IN while> <S <NP <PRP they>> <VP <VBD waited> <PP <IN for> <NP <NNP Robbins>>> <S <VP <TO to> <VP <VB retrieve> <NP <DT the> <NN birdie>>>>>>>>> <. .>>>";
+//        String sentence = "<ROOT <S <S <NP <NP <PRP$ My> <JJ favorite> <NN part>> <, ,> <CC and> <NP <NP <DT the> <JJ only> <NN thing>> <SBAR <WHNP <WDT that>> <S <VP <MD would> <VP <VB make> <NP <PRP me>>> <, ,> <VP <VB go> <PRT <RP out>> <PP <IN of> <NP <PRP$ my> <NN way> <S <VP <TO to> <VP <VB see> <NP <DT this>> <ADVP <RB again>>>>>>>>>>>> <, ,>> <VP <VBD was> <NP <NP <DT the> <JJ wonderful> <NN scene>> <PP <IN with> <NP <DT the> <NN physicists> <VBG playing> <NN badmitton>>>>>> <, ,> <NP <PRP I>> <VP <VBD loved> <NP <NP <DT the> <NNS sweaters>> <CC and> <NP <DT the> <NN conversation>>> <SBAR <IN while> <S <NP <PRP they>> <VP <VBD waited> <PP <IN for> <NP <NNP Robbins>>> <S <VP <TO to> <VP <VB retrieve> <NP <DT the> <NN birdie>>>>>>>>> <. .>>>";
+        String sentence = Cparser.Core_parser("she is so pretty all over the world.");
 
+        System.out.println(sentence);
     	// 1.Define a pattern tree        
         Patterns p = new Patterns(pattern);
         
@@ -77,7 +81,7 @@ public class Main {
 	        relation = p.patternMatching(t);
 	        if (relation == null) return; // Not matched.
 
-	        System.out.println(relation);
+//	        System.out.println(relation);
         }catch(Exception e){
 //        	System.err.println("main Exception -- patternMatching() part: "+e.getMessage());
         	return;

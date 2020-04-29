@@ -15,7 +15,7 @@ public class Patterns {
     public TreePatternMatch match = null;
 
     public Patterns(String patternTree) {
-    	System.out.println("Pattern Tree: ");
+//    	System.out.println("Pattern Tree: ");
 
         this.match = new TreePatternMatch();
         this.patternTree = patternTree;
@@ -93,7 +93,7 @@ public class Patterns {
             		PairMatched pair = list.get(i);
             		// For debug
             		// System.out.println(pair.getpNode()+", "+pair.gettNode()+", " + pair.gettNodeGrandParent() + ", "+pair.getpNodeValue()+", "+pair.gettNodeValue()+", ["+pair.getpNodeType()+"]");
-            		System.out.print("["+pair.getpNodeValue()+"("+pair.getpNode()+"), "+pair.gettNodeValue()+"("+pair.gettNode()+")]  ");
+//            		System.out.print("["+pair.getpNodeValue()+"("+pair.getpNode()+"), "+pair.gettNodeValue()+"("+pair.gettNode()+")]  ");
             	}
             	return list;
             }
@@ -153,11 +153,11 @@ public class Patterns {
             if (list.size()==0) 
             	return null;
             else{
-            	System.out.println("pNode\ttNode\ttGPNode\tpNV\ttNV\tpNType");
+//            	System.out.println("pNode\ttNode\ttGPNode\tpNV\ttNV\tpNType");
             	for(int i=0; i < list.size(); i++){
             		PairMatched pair = list.get(i);
-            		System.out.println(pair.getpNode()+"\t"+pair.gettNode()+"\t" + pair.gettNodeGrandParent() + "\t"+
-            				pair.getpNodeValue()+"\t"+pair.gettNodeValue()+"\t["+pair.getpNodeType()+"]");
+//            		System.out.println(pair.getpNode()+"\t"+pair.gettNode()+"\t" + pair.gettNodeGrandParent() + "\t"+
+//            				pair.getpNodeValue()+"\t"+pair.gettNodeValue()+"\t["+pair.getpNodeType()+"]");
             	}
             	return list;
             }
