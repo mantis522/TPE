@@ -10,11 +10,13 @@ public class Main {
      */
     public static void main(String[] args) {
         CoreNLP_Parser Cparser = new CoreNLP_Parser();
-        String sentence = Cparser.Core_parser("On average, How many miles are there to the moon?");
+//        String sentence = Cparser.Core_parser("Most people think of the homeless as just a lost cause while worrying about things such as racism, the war on Iraq, pressuring kids to succeed, technology, the elections, inflation, or worrying if they will be next to end up on the streets. ");
         Split_Sentence split_s = new Split_Sentence();
-        ArrayList<String> splited_sentence = split_s.split_sentence("How many miles are there to the moon? How many times do I have to tell you?");
-
-
+        String sentence = "<ROOT <S <NP <PRP He>> <VP <VBZ is> <VP <VBN given> <NP <DT the> <NN nickname>> <NP <NP <NNP Pepto>> <PP <IN by> <NP <NP <DT a> <ADJP <JJ vagrant> <SBAR <IN after> <S <NP <PRP it>> <VP <VBZ is> <VP <VBN written> <PP <IN on> <NP <PRP$ his> <NN forehead>>> <SBAR <WHADVP <WRB where>> <S <NP <NNP Bolt>> <VP <VBZ meets> <NP <NP <NP <NP <JJ other> <NNS characters>> <PP <VBG including> <NP <NP <DT a> <NN woman>> <PP <IN by> <NP <NP <DT the> <NN name>> <PP <IN of> <NP <NNP Molly> <NNP Lesley> <NNP Ann> <NNP Warren>>>>>>>> <NP <NP <DT an> <NN exdancer>> <SBAR <WHNP <WP who>> <S <VP <VBD got> <NP <NN divorce>> <PP <IN before> <S <VP <VBG losing> <NP <PRP$ her> <NN home>>>>>>>>>> <, ,> <CC and> <NP <PRP$ her> <NNS pals>>>>>>>>>>> <NNP Sailor> <NNP Howard> <NNP Morris>> <CC and> <NP <NP <NNP Fumes> <NNP Teddy> <NNP Wilson>> <SBAR <WHNP <WP who>> <S <VP <VBP are> <ADVP <RB already>> <VP <VBN used> <PP <TO to> <NP <DT the> <NNS streets>>>>>>>>>>>>> <. .>>>";
+//        String sentence = "<ROOT <S <NP <JJS Most> <NNS people>> <VP <VBP think> <PP <IN of> <NP <NP <DT the> <NN homeless>> <CONJP <RB as> <RB just>> <NP <NP <DT a> <VBN lost> <NN cause>> <PP <IN while> <S <VP <VP <VBG worrying> <PP <IN about> <NP <NP <NNS things>> <PP <JJ such> <IN as> <NP <NP <NN racism>> <, ,> <NP <NP <DT the> <NN war>> <PP <IN on> <NP <NNP Iraq>>>>>>>>> <, ,> <VP <VBG pressuring> <NP <NNS kids>> <S <VP <TO to> <VP <VB succeed> <, ,> <NP-TMP <NP <NN technology>> <, ,> <NP <DT the> <NNS elections>>> <, ,> <NP <NN inflation>>>>>> <, ,> <CC or> <VP <VBG worrying> <SBAR <IN if> <S <NP <PRP they>> <VP <MD will> <VP <VB be> <ADJP <JJ next> <S <VP <TO to> <VP <VB end> <PRT <RP up>> <PP <IN on> <NP <DT the> <NNS streets>>>>>>>>>>>>>>>>>>> <. .>>>";
+//        ArrayList<String> splited_sentence = split_s.split_sentence("How many miles are there to the moon? How many times do I have to tell you?");
+        String pattern = "<S <NP * <NN.*|PR.* .+>> <VP <VB.* .+> <VP <VB.* .+> <PP <IN .+> <NP * <NN .+> *> *> *> *> *>";
+//        String pattern = "<S <NP * <NNS .+> *> <VP <VB.* .+> *> *>"; // Most people think. 가장 기본적인 S - NP VP 구조에서 가장 앞 부분을 추출해내는 패턴.
         /* 0. Input a TPE pattern sentence and a parsed sentence.
     	 *   - pattern: TPE pattern sentence
     	 *   - sentence: A parsed sentence (It can be obtained from the Stanford NLP full parser.)
@@ -27,7 +29,7 @@ public class Main {
 //    	String pattern = "<S <NP * <NN.* .+> * > * <VP * <VB.* .+> * <NP * <NP * <NN.* .+> *> <PP <IN .+> <NP * <NN.* .+> * > * > * > * > * >";
 //    	String sentence = "<S <NP <NNP Andong>> <VP <VBZ is> <NP <NP <DT a> <JJ historical> <NN city>> <PP <IN in> <NP <NN Korea>>>>> <. !>>";
     	// 의문문 예제
-    	String pattern = "{SBARQ * {WH.* <WRB .+> <RB|JJ .+> * <NN.* .+> * } {SQ * } * }"; // How + many/much + Noun (의문문에서 동사와 그 뒷 부분은 제외한 앞부분 (= 의문사 부분)만 매칭하는 패턴)
+//    	String pattern = "{SBARQ * {WH.* <WRB .+> <RB|JJ .+> * <NN.* .+> * } {SQ * } * }"; // How + many/much + Noun (의문문에서 동사와 그 뒷 부분은 제외한 앞부분 (= 의문사 부분)만 매칭하는 패턴)
 ////        String pattern = "{{WH.* <WRB .+> <RB|JJ .+> * <NN.* .+> * } {SQ * } * }";
 ////    	String sentence = "<SBARQ <PP <IN On> <NP <NN average>>> <, ,> <WHNP <WHADJP <WRB How> <JJ many>> <NNS miles>> <SQ <VBP are> <NP <EX there>> <PP <TO to> <NP <DT the> <NN moon>>>> <. ?>>";
 //        String sentence = "<SBARQ <WHNP <WHADJP <WRB How> <JJ many>> <NNS people>> <SQ <VP <VBP work> <PP <IN in> <NP <PRP$ your> <NN company>>>>> <. ?>>";
@@ -113,6 +115,7 @@ public class Main {
 //        System.out.println("\n\nLoad matched words into array list: ");
 //        ArrayList<PairMatched> list = null;
 //        list = p.patternMatchingToList(t);
+//        System.out.println(fruits);
         String sum_text = String.join(" ",fruits);
         System.out.println(sum_text);
 
