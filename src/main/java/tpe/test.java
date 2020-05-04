@@ -10,34 +10,26 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class JSON_parser_another {
+public class test {
     public static void main(String[] args) {
         JSONParser parser = new JSONParser();
+        re_test myTest = new re_test();
         ArrayList<String> first = new ArrayList<>();
         try {
-            // myJson.json파일을 읽어와 Object로 파싱
             Object obj = parser.parse(new FileReader("C:/Users/ruin/Desktop/data/train_neg_edit.json"));
             JSONObject jsonObject = (JSONObject) obj;
-
             JSONArray data = (JSONArray) jsonObject.get("items");
-            for(int i = 0; i < data.size(); i++){
+//            System.out.println(data);
+            for (int i = 0; i < data.size(); i++) {
                 JSONObject result = (JSONObject) data.get(i);
-                JSONArray par = (JSONArray) result.get("parsed_sentence");
-                JSONArray split = (JSONArray) result.get("splited_sentence");
-                System.out.println("index :: " + i);
-                for (int j = 0; j < par.size(); j++){
-
-                    System.out.println(split.get(j));
-                    System.out.println(par.get(j));
+                JSONArray data2 = (JSONArray) result.get("parsed_sentence");
+                for(int j = 0; j < data2.size(); j++) {
+                    String sentence = (String) data2.get(j);
+                    System.out.println(myTest.replaced2(sentence));
                 }
-                System.out.println("------------------------------");
-
-//                System.out.println("review_text :: " + result.get("txt"));
-//                System.out.println("parsed_sentence :: " + result.get("parsed_sentence"));
-
             }
 
-        } catch (ParseException e) {
+        }catch (ParseException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -47,5 +39,4 @@ public class JSON_parser_another {
 
 
     }
-
 }

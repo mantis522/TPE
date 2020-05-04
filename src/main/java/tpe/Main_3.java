@@ -24,6 +24,7 @@ public class Main_3 {
 
             ArrayList<String> splited_origin = split.split_sentence(original_sentence);
             obj.put("index", i);
+            obj.put("label", 0);
             obj.put("txt", original_sentence);
 //            list.add(splited_origin);
 //            obj.put("splited_sentence", list);
@@ -43,7 +44,7 @@ public class Main_3 {
 //        System.out.println(list);
         try {
 
-            FileWriter file = new FileWriter("/Users/ruin/Desktop/data/test3.json");
+            FileWriter file = new FileWriter("C:/Users/ruin/Desktop/data/train_neg_edit.json");
             file.write(itemlist.toJSONString());
             file.flush();
             file.close();

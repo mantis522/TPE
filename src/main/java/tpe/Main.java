@@ -12,9 +12,10 @@ public class Main {
         CoreNLP_Parser Cparser = new CoreNLP_Parser();
 //        String sentence = Cparser.Core_parser("Most people think of the homeless as just a lost cause while worrying about things such as racism, the war on Iraq, pressuring kids to succeed, technology, the elections, inflation, or worrying if they will be next to end up on the streets. ");
         Split_Sentence split_s = new Split_Sentence();
-        String sentence = "<ROOT <S <NP <PRP He>> <VP <VBZ is> <VP <VBN given> <NP <DT the> <NN nickname>> <NP <NP <NNP Pepto>> <PP <IN by> <NP <NP <DT a> <ADJP <JJ vagrant> <SBAR <IN after> <S <NP <PRP it>> <VP <VBZ is> <VP <VBN written> <PP <IN on> <NP <PRP$ his> <NN forehead>>> <SBAR <WHADVP <WRB where>> <S <NP <NNP Bolt>> <VP <VBZ meets> <NP <NP <NP <NP <JJ other> <NNS characters>> <PP <VBG including> <NP <NP <DT a> <NN woman>> <PP <IN by> <NP <NP <DT the> <NN name>> <PP <IN of> <NP <NNP Molly> <NNP Lesley> <NNP Ann> <NNP Warren>>>>>>>> <NP <NP <DT an> <NN exdancer>> <SBAR <WHNP <WP who>> <S <VP <VBD got> <NP <NN divorce>> <PP <IN before> <S <VP <VBG losing> <NP <PRP$ her> <NN home>>>>>>>>>> <, ,> <CC and> <NP <PRP$ her> <NNS pals>>>>>>>>>>> <NNP Sailor> <NNP Howard> <NNP Morris>> <CC and> <NP <NP <NNP Fumes> <NNP Teddy> <NNP Wilson>> <SBAR <WHNP <WP who>> <S <VP <VBP are> <ADVP <RB already>> <VP <VBN used> <PP <TO to> <NP <DT the> <NNS streets>>>>>>>>>>>>> <. .>>>";
+        String sentence = "<ROOT <S <NP <NP <DT A> <JJ formal> <NN orchestra> <NN audience>> <SBAR <S <VP <VBZ is> <VP <VBN turned> <PP <IN into> <NP <DT an> <ADJP <JJ insane> <, ,> <JJ violent>> <NN mob>>> <PP <IN by> <NP <NP <DT the> <JJ crazy> <NNS chantings>> <PP <IN of> <NP <PRP it>>>>>>>>>> <VP <VBZ is> <NP <NNS singers>>> <. .>>>";
 //        String sentence = "<ROOT <S <NP <JJS Most> <NNS people>> <VP <VBP think> <PP <IN of> <NP <NP <DT the> <NN homeless>> <CONJP <RB as> <RB just>> <NP <NP <DT a> <VBN lost> <NN cause>> <PP <IN while> <S <VP <VP <VBG worrying> <PP <IN about> <NP <NP <NNS things>> <PP <JJ such> <IN as> <NP <NP <NN racism>> <, ,> <NP <NP <DT the> <NN war>> <PP <IN on> <NP <NNP Iraq>>>>>>>>> <, ,> <VP <VBG pressuring> <NP <NNS kids>> <S <VP <TO to> <VP <VB succeed> <, ,> <NP-TMP <NP <NN technology>> <, ,> <NP <DT the> <NNS elections>>> <, ,> <NP <NN inflation>>>>>> <, ,> <CC or> <VP <VBG worrying> <SBAR <IN if> <S <NP <PRP they>> <VP <MD will> <VP <VB be> <ADJP <JJ next> <S <VP <TO to> <VP <VB end> <PRT <RP up>> <PP <IN on> <NP <DT the> <NNS streets>>>>>>>>>>>>>>>>>>> <. .>>>";
 //        ArrayList<String> splited_sentence = split_s.split_sentence("How many miles are there to the moon? How many times do I have to tell you?");
+//        String pattern = "<NP * <JJ .+> <NN .+> *>";
         String pattern = "<S <NP * <NN.*|PR.* .+>> <VP <VB.* .+> <VP <VB.* .+> <PP <IN .+> <NP * <NN .+> *> *> *> *> *>";
 //        String pattern = "<S <NP * <NNS .+> *> <VP <VB.* .+> *> *>"; // Most people think. 가장 기본적인 S - NP VP 구조에서 가장 앞 부분을 추출해내는 패턴.
         /* 0. Input a TPE pattern sentence and a parsed sentence.
@@ -78,7 +79,11 @@ public class Main {
         String relation = null;
         try{
 	        relation = p.patternMatching(t);    // 일단은 이 부분만 필수
-	        if (relation == null) return; // Not matched.
+
+	        if (relation == null){
+	            relation = "::7,8::5,5::6,6::3,3::4,4::1,2::9,9::::";
+//	            return; // Not matched.
+            }
 
 //	        System.out.println(relation);
         }catch(Exception e){

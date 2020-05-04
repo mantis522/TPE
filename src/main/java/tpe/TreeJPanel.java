@@ -6,7 +6,6 @@ import edu.stanford.nlp.trees.PennTreeReader;
 import edu.stanford.nlp.trees.Tree;
 
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -243,14 +242,18 @@ public class TreeJPanel extends JPanel {
 
     public static void main(String[] args) throws IOException {
         TreeJPanel tjp = new TreeJPanel();
-        // String ptbTreeString1 = "(ROOT (S (NP (DT This)) (VP (VBZ is) (NP (DT a) (NN test))) (. .)))";
-        CoreNLP_Parser Core_parser = new CoreNLP_Parser();
-        String ptbTreeString = "(ROOT (S (NP (PRP He)) (VP (VBZ is) (VP (VBN given) (NP (DT the) (NN nickname)) (NP (NP (NNP Pepto)) (PP (IN by) (NP (NP (DT a) (ADJP (JJ vagrant) (SBAR (IN after) (S (NP (PRP it)) (VP (VBZ is) (VP (VBN written) (PP (IN on) (NP (PRP$ his) (NN forehead))) (SBAR (WHADVP (WRB where)) (S (NP (NNP Bolt)) (VP (VBZ meets) (NP (NP (NP (NP (JJ other) (NNS characters)) (PP (VBG including) (NP (NP (DT a) (NN woman)) (PP (IN by) (NP (NP (DT the) (NN name)) (PP (IN of) (NP (NNP Molly) (NNP Lesley) (NNP Ann) (NNP Warren)))))))) (NP (NP (DT an) (NN exdancer)) (SBAR (WHNP (WP who)) (S (VP (VBD got) (NP (NN divorce)) (PP (IN before) (S (VP (VBG losing) (NP (PRP$ her) (NN home)))))))))) (, ,) (CC and) (NP (PRP$ her) (NNS pals))))))))))) (NNP Sailor) (NNP Howard) (NNP Morris)) (CC and) (NP (NP (NNP Fumes) (NNP Teddy) (NNP Wilson)) (SBAR (WHNP (WP who)) (S (VP (VBP are) (ADVP (RB already)) (VP (VBN used) (PP (TO to) (NP (DT the) (NNS streets))))))))))))) (. .)))";
+        re_test myTest = new re_test();
+        String ptbTreeString = "(ROOT (S (ADVP (RB Unfortunately)) (NP (PRP it)) (VP (VBZ stays) (NP (JJ absurd) (DT the) (JJ WHOLE) (NN time)) (PP (IN with) (NP (DT no) (JJ general) (NN narrative))) (S (ADVP (RB eventually)) (VP (VBG making) (NP (PRP it)) (ADVP (RB just)) (ADVP (RB too) (JJ off)) (S (VP (VBG putting)))))) (. .)))";
+//         String ptbTreeString = "(ROOT (S (NP (DT This)) (VP (VBZ is) (RB not) (NP (NP (DT a) (NN film)) (SBAR (S (NP (PRP you)) (VP (MD can) (ADVP (RB really)) (VP (VB analyse) (ADVP (RB separately)) (SBAR (IN from) (S (NP (PRP it)) (VP (VBZ is) (NP (NN production))))))))))) (. .)))\n";
+        Parsed_Sent_pass parse = new Parsed_Sent_pass();
+//        ArrayList<String> first = parse.JSON_to_parsed();
+
+//        String ptbTreeString = first.get(1);
 //        String ptbTreeString = Core_parser.normal_pattern("Most people think of the homeless as just a lost cause while worrying about things such as racism, the war on Iraq, pressuring kids to succeed, technology, the elections, inflation, or worrying if they will be next to end up on the streets. ");
         if (args.length > 0) {
             ptbTreeString = args[0];
         }
-        Tree tree = (new PennTreeReader(new StringReader(ptbTreeString), new LabeledScoredTreeFactory(new StringLabelFactory()))).readTree();
+        Tree tree = (new PennTreeReader(new StringReader(myTest.replaced2(ptbTreeString)), new LabeledScoredTreeFactory(new StringLabelFactory()))).readTree();
         tjp.setTree(tree);
         tjp.setBackground(Color.white);
         JFrame frame = new JFrame();
