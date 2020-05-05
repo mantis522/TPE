@@ -243,8 +243,10 @@ public class TreeJPanel extends JPanel {
     public static void main(String[] args) throws IOException {
         TreeJPanel tjp = new TreeJPanel();
         re_test myTest = new re_test();
-        String ptbTreeString = "(ROOT (S (ADVP (RB Unfortunately)) (NP (PRP it)) (VP (VBZ stays) (NP (JJ absurd) (DT the) (JJ WHOLE) (NN time)) (PP (IN with) (NP (DT no) (JJ general) (NN narrative))) (S (ADVP (RB eventually)) (VP (VBG making) (NP (PRP it)) (ADVP (RB just)) (ADVP (RB too) (JJ off)) (S (VP (VBG putting)))))) (. .)))";
-//         String ptbTreeString = "(ROOT (S (NP (DT This)) (VP (VBZ is) (RB not) (NP (NP (DT a) (NN film)) (SBAR (S (NP (PRP you)) (VP (MD can) (ADVP (RB really)) (VP (VB analyse) (ADVP (RB separately)) (SBAR (IN from) (S (NP (PRP it)) (VP (VBZ is) (NP (NN production))))))))))) (. .)))\n";
+
+        String ptbTreeString = "<ROOT <S <ADVP <RB Apparently>> <NP <NP <NN Flight>> <PP <IN of> <NP <NN Fury>>>> <VP <VBZ is> <NP <NP <DT an> <ADJP <RB almost> <JJ sceneforscene>> <NN wordforword> <NN remake>> <PP <IN of> <NP <NP <JJ Black> <NN Thunder> <CD 1988>> <VP <VBG starring> <NP <NNP Michael> <NNP Dudikoff>> <PP <IN with> <S <NP <NP <JJ many>> <PP <IN of> <NP <DT the> <JJ same> <NNS characters>>>> <ADVP <RB even>> <VP <VBG sharing> <NP <DT the> <JJ same> <NN name>> <SBAR <RB so> <S <NP <RB exactly> <DT the> <JJ same> <NN dialogue>> <VP <MD could> <VP <VB be> <VP <VBN used> <PP <IN without> <S <NP <DT the> <NNS makers>> <ADVP <RB even>> <VP <VBG having> <S <VP <TO to> <VP <VB change> <NP <NNS things>> <PP <IN like> <NP <NNS names>>> <SBAR <IN although> <S <NP <PRP I>> <VP <MD must> <VP <VB admit> <SBAR <S <NP <PRP I>> <VP <VBP have> <ADVP <RB never>> <VP <VBN seen> <SBAR <S <NP <JJ Black> <NN Thunder>> <ADVP <RB therefore>> <VP <MD can> <RB not> <VP <VB compare> <NP <DT the> <CD two>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> <. .>>>";
+
+        //         String ptbTreeString = "(ROOT (S (NP (DT This)) (VP (VBZ is) (RB not) (NP (NP (DT a) (NN film)) (SBAR (S (NP (PRP you)) (VP (MD can) (ADVP (RB really)) (VP (VB analyse) (ADVP (RB separately)) (SBAR (IN from) (S (NP (PRP it)) (VP (VBZ is) (NP (NN production))))))))))) (. .)))\n";
         Parsed_Sent_pass parse = new Parsed_Sent_pass();
 //        ArrayList<String> first = parse.JSON_to_parsed();
 
