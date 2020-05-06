@@ -17,7 +17,7 @@ public class test2 {
         re_test myTest = new re_test();
         ArrayList<String> first = new ArrayList<>();
         try{
-            Object obj = parser.parse(new FileReader("/Users/ruin/IdeaProjects/TPE/src/main/resources/train_neg_edit.json"));
+            Object obj = parser.parse(new FileReader("C:/Users/ruin/IdeaProjects/core-nlp-example/src/main/resources/train_pos_edit.json"));
             JSONObject jsonObject = (JSONObject) obj;
             JSONArray data = (JSONArray) jsonObject.get("items");
 //            System.out.println(data);
