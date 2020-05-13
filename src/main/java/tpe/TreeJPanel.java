@@ -246,7 +246,7 @@ public class TreeJPanel extends JPanel {
         CoreNLP_Parser parser = new CoreNLP_Parser();
 
 
-        String sent = "It is funny that the critics here could not get the locale straight";
+        String sent = "It is hard to like this movie.";
         String ptbTreeString = parser.Core_parser(sent);
 
 

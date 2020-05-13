@@ -16,7 +16,7 @@ public class DependencyParse {
         StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
         // the following has examples for the new Core Wrapper API and the older Annotation API
         // example using Core Wrappers (new API designed to make it easier to work with NLP data)
-        String sent = "It is funny that the critics here could not get the locale straight";
+        String sent = "It is hard to like this movie.";
         CoreDocument exampleDocument = new CoreDocument(sent);
         // annotate document
         pipeline.annotate(exampleDocument);
