@@ -6,7 +6,6 @@ import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.trees.Tree;
 import edu.stanford.nlp.trees.TreeCoreAnnotations;
 
-import java.util.ArrayList;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -71,14 +70,15 @@ public class CoreNLP_Parser{
 
     public static void main(String[] args) {
         CoreNLP_Parser parser = new CoreNLP_Parser();
-        JSON_parser parse = new JSON_parser();
-        ArrayList<String> first = parse.json_parsing();
-        Split_Sentence split = new Split_Sentence();
-        ArrayList<String> test = split.split_sentence(first.get(1));
-//        System.out.println(test);
-//        System.out.println(test.get(5));
-//        System.out.println(parser.normal_pattern(test.get(5)));
-        String parsed_text = parser.Core_parser(test.get(5));
-        System.out.println(parsed_text);
+        System.out.println(parser.Core_parser("It is funny that the critics here could not get the locale straight"));
+//        JSON_parser parse = new JSON_parser();
+//        ArrayList<String> first = parse.json_parsing();
+//        Split_Sentence split = new Split_Sentence();
+//        ArrayList<String> test = split.split_sentence(first.get(1));
+////        System.out.println(test);
+////        System.out.println(test.get(5));
+////        System.out.println(parser.normal_pattern(test.get(5)));
+//        String parsed_text = parser.Core_parser(test.get(5));
+//        System.out.println(parsed_text);
     }
 }

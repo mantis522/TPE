@@ -17,7 +17,7 @@ public class test2 {
         re_test myTest = new re_test();
         ArrayList<String> first = new ArrayList<>();
         try{
-            Object obj = parser.parse(new FileReader("C:/Users/ruin/IdeaProjects/core-nlp-example/src/main/resources/train_pos_edit.json"));
+            Object obj = parser.parse(new FileReader("C:/Users/ruin/IdeaProjects/core-nlp-example/src/main/resources/train_neg_edit.json"));
             JSONObject jsonObject = (JSONObject) obj;
             JSONArray data = (JSONArray) jsonObject.get("items");
 //            System.out.println(data);
@@ -26,13 +26,13 @@ public class test2 {
                 JSONArray data2 = (JSONArray) result.get("parsed_sentence");
                 for(int j = 0; j < data2.size(); j++){
                     String sentence = (String) data2.get(j);
-//                    String pattern = "<S <NP <(NN.*|PRP) .+> *>  <VP <VB.* .+> <PP <IN .+> <NP <NN.* .+> * > *> * > *>";
+                    String pattern = "<S <NP <(NN.*|PRP) .+> *>  <VP <VB.* .+> <PP <IN .+> <NP <NN.* .+> * > *> * > *>";
 //                    String pattern = "<S * <NP <(NN.*|PRP) .+>> <VP <VB.* .+> <NP <NP *  <(NN.*|PRP) .+> *> *> *> *>";
 //                    String pattern = "<S <NP.* * <NN.*|PR.* .+> *> * <VP.* * <VB.* .+> <NP * <NN.*|RP.* .+> * > * > * >";
 //                    String pattern = "<NP <NP * <JJ .+> <NN .+> *> <PP <IN .+> <NP * <JJ .+> <NN .+> *> *> *>";
 //                    String pattern = "<NP <NP *  <NN.* .+> *> <PP <IN .+> <NP * <VB.* .+> <NN.* .+> * > *> *>";
-//                    String pattern = "<S <NP <NP <PR.* .+> <JJ.* .+> <NN.* .+> *> *> <VP <VB.* .+> <NP <NP <DT.* .+> <JJ.* .+> <NN.* .+> *> *> *> *>";
-                    String pattern = "<S <NP <NP *  <NN.* .+> *> *> <VP <VB.* .+> <NP <NP * <NN.* .+> *> *> *> *>";
+//                    String pattern = "<S <NP <NP <(NN.*|PR.*)  .+> <JJ.* .+> <NN.* .+> *> *> <VP <VB.* .+> <NP <NP * <JJ.* .+> <(NN.*|PR.*)  .+> *> *> *> *>";
+//                    String pattern = "<S <NP <NP *  <NN.* .+> *> *> <VP <VB.* .+> <NP <NP * <NN.* .+> *> *> *> *>";
 
 
 

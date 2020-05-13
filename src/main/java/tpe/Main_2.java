@@ -9,9 +9,9 @@ public class Main_2 {
         ArrayList<String> first = new ArrayList<>();
 //        ArrayList<ArrayList<String>> second = new ArrayList<>();
         Split_Sentence split_s = new Split_Sentence();
-        ArrayList<String> splited_sentence = split_s.split_sentence("How many miles are there to the moon? How many times do I have to tell you?");
+        ArrayList<String> splited_sentence = split_s.split_sentence("I like the girls who like soccer a lot.");
         for (int j =0; j < splited_sentence.size(); j++){
-            String pattern = "{SBARQ * {WH.* <WRB .+> <RB|JJ .+> * <NN.* .+> * } {SQ * } * }";
+            String pattern = "<NP .+>";
             Patterns p1 = new Patterns(pattern);
             MakeTree tMT1 = new MakeTree();
             TPETree t1 = new TPETree();
