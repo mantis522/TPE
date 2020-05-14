@@ -31,8 +31,11 @@ public class Main {
 
 //        String sentence = Cparser.Core_parser("Artists are people who draw pictures");
 //        String pattern = "<ROOT <S <NP <(PR.*|NN.*) .+>> <VP <VB.* .+> <NP <NP * <(PR.*|NN.*) .+>> <SBAR <WHNP <WP .+>> <S <VP <VBP .+> >>>>>>>";
-        String sentence = Cparser.Core_parser("It is hard to like this movie.");
-        String pattern = "<ROOT <S <NP <(PR.*|NN.*) It>> <VP <VBZ is> <ADJP <JJ hard> <S <VP <TO to> <VP <VB like> <NP <DT .+> <NN.* .+>*>*>*>*>*>*>*>*>";
+        String sentence = Cparser.Core_parser("Bell made the phone in 1895");
+        String pattern = "{S * {NP * <NN.* .+> *} {VP * <VB.* .+> * {NP * <NN.* .+> *} * <IN .+> <(NN.*|CD) .+> *} *}";
+
+
+
 
 //        String pattern = "<ROOT * <S * <NP * <(PR.*|NN.*) .+>*> * <VP <VB.* .+> * <NP <NP <(PR.*|NN.*) .+>*> * <SBAR <WHNP <WP .+> *> <S <VP <VBP .+> * <NP <NNS .+>* >*>*>*>*>*>*>*>";
 
