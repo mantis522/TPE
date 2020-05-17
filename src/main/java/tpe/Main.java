@@ -32,7 +32,7 @@ public class Main {
 //        String sentence = Cparser.Core_parser("Artists are people who draw pictures");
 //        String pattern = "<ROOT <S <NP <(PR.*|NN.*) .+>> <VP <VB.* .+> <NP <NP * <(PR.*|NN.*) .+>> <SBAR <WHNP <WP .+>> <S <VP <VBP .+> >>>>>>>";
         String sentence = Cparser.Core_parser("The movie has very few good points to talk about.");
-        String pattern = "{ ROOT <S <NP <DT The> <NN movie>> <VP <VBZ has>  {S <RB very> <JJ few> <JJ good> <NNS points> <VP <TO to> <VP <VB talk> <PP <IN about>>>>>> <. .>} }";
+        String pattern = "{ ROOT <S <NP * <NN movie>> <VP <VBZ has>  {S <RB very> <JJ few> <JJ .+> <NNS .+> <VP <TO to> <VP <VB talk> <PP <IN about>>>>>> <. .>} }";
 
 
 
