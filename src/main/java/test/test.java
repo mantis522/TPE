@@ -41,7 +41,7 @@ public class test {
 
 
                     /* /////////// 패턴 관련 부분 //////////////// */
-                    String pattern = "{S <EX .+> * <VB.* .+> * <JJ .+> * <(PR.*|NN.*) .+> * <IN .+> * <(PR.*|NN.*) .+> * <(PR.*|NN.*) .+> *}";
+                    String pattern = "{ROOT {S {NP <(PR.*|NN.*) .+>}* {VP <VB.* .+> {NP <(PR.*|NN.*) .+> *}*}*}*}";
                     Patterns p = new Patterns(pattern);
 
                     MakeTree tMT = new MakeTree();  // 필수
@@ -87,9 +87,15 @@ public class test {
                         String result_text = sum_text;
                         List<String> newList = new ArrayList<String>(list1);
                         newList.add(result_text);
-                        System.out.println(result_text);
+//                        System.out.println();
+//                        System.out.println(result_text);
                         newList.addAll(list2);
-                        System.out.println(newList);
+//                        System.out.println(newList);
+                        System.out.println();
+                        for(int o = 0; o < newList.size(); o++){
+                            System.out.print(newList.get(o) + " ");
+//                            System.out.println("\n");
+                        }
                     }
 
 
@@ -97,6 +103,7 @@ public class test {
 //                    newList.addAll(list2);
 //                    System.out.println(newList);
                 }
+                System.out.println("\n");
                 System.out.println("--------------------------------------------");
             }
 
