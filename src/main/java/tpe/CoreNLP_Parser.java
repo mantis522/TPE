@@ -70,7 +70,7 @@ public class CoreNLP_Parser{
 
     public static void main(String[] args) {
         CoreNLP_Parser parser = new CoreNLP_Parser();
-        System.out.println(parser.Core_parser(" The movie has very few good points to talk about."));
+        System.out.println(parser.Core_parser("I like you"));
 //        JSON_parser parse = new JSON_parser();
 //        ArrayList<String> first = parse.json_parsing();
 //        Split_Sentence split = new Split_Sentence();

@@ -246,8 +246,9 @@ public class TreeJPanel extends JPanel {
         CoreNLP_Parser parser = new CoreNLP_Parser();
 
 
-        String sent = "The movie has very few good points to talk about. ";
+        String sent = "Titanic is the greatest movie of the 21st Century.With great acting,directing,effects,music and generally everything. ";
         String ptbTreeString = parser.Core_parser(sent);
+        System.out.println(myTest.replaced2(ptbTreeString));
 
         //         String ptbTreeString = "(ROOT (S (NP (DT This)) (VP (VBZ is) (RB not) (NP (NP (DT a) (NN film)) (SBAR (S (NP (PRP you)) (VP (MD can) (ADVP (RB really)) (VP (VB analyse) (ADVP (RB separately)) (SBAR (IN from) (S (NP (PRP it)) (VP (VBZ is) (NP (NN production))))))))))) (. .)))\n";
         Parsed_Sent_pass parse = new Parsed_Sent_pass();
