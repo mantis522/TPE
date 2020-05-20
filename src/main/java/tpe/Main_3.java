@@ -15,8 +15,10 @@ public class Main_3 {
         Split_Sentence split = new Split_Sentence();
         JSONArray data_list = new JSONArray();
         JSONObject itemlist = new JSONObject();
+        int count = 0;
 
         for (int i = 0; i < json_sentence.size(); i++){
+            System.out.println(count);
             JSONObject obj = new JSONObject();
             JSONArray list = new JSONArray();
             JSONArray list2 = new JSONArray();
@@ -39,12 +41,13 @@ public class Main_3 {
             data_list.add(obj);
             itemlist.put("items", data_list);
 //            System.out.println(list);
+            count = count + 1;
         }
 
 //        System.out.println(list);
         try {
 
-            FileWriter file = new FileWriter("C:/Users/ruin/Desktop/data/train_neg_edit.json");
+            FileWriter file = new FileWriter("C:/Users/ruin/Desktop/data/edited_data/train_neg_edit_2000");
             file.write(itemlist.toJSONString());
             file.flush();
             file.close();
