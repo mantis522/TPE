@@ -25,7 +25,7 @@ public class Data_augmentation {
 
         try {
 //            Object obj = parser.parse(new FileReader("/Users/ruin/IdeaProjects/TPE/src/main/resources/train_neg_edit.json"));
-            Object obj = parser.parse(new FileReader("C:/Users/ruin/IdeaProjects/core-nlp-example/src/main/resources/train_neg_edit.json"));
+            Object obj = parser.parse(new FileReader("C:/Users/ruin/IdeaProjects/core-nlp-example/src/main/resources/train_pos_edit.json"));
             JSONObject jsonObject = (JSONObject) obj;
             JSONArray data = (JSONArray) jsonObject.get("items");
             for (int i = 0; i < data.size(); i++) {
@@ -45,7 +45,7 @@ public class Data_augmentation {
 
 
                     /* /////////// 패턴 관련 부분 //////////////// */
-                    String pattern = "{S <(PR.*|NN.*) .+> <VB.* .+> * <JJ .+> <(PR.*|NN.*) .+> *}";
+                    String pattern = "{ROOT {S {NP <(PR.*|NN.*) .+>} * {VP <VB.* .+> * {S {NP <(PR.*|NN.*) .+> * } * {ADJP <JJ .+> *}*}*}*}*}";
                     Patterns p = new Patterns(pattern);
 
                     MakeTree tMT = new MakeTree();  // 필수
@@ -95,10 +95,11 @@ public class Data_augmentation {
                         augmented_data.add(newList);
                         obj2.put("label", 0);
                         obj2.put("augmented_text", augmented_data);
+                        System.out.println(result_text);
 //
                         try {
 
-                            FileWriter file = new FileWriter("/Users/ruin/Desktop/data/data_augmentation/neg_imi_2.json");
+                            FileWriter file = new FileWriter("/Users/ruin/Desktop/data/data_augmentation/test.json");
                             file.write(obj2.toJSONString());
                             file.flush();
                             file.close();
