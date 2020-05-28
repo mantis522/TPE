@@ -26,7 +26,7 @@ public class json_test2 {
                 JSONObject result = (JSONObject) data.get(i);
                 JSONArray data2 = (JSONArray) result.get("parsed_sentence");
                 JSONArray data3 = (JSONArray) result.get("splited_sentence");
-                System.out.println(data3);
+                System.out.println(data2);
             }
 
             // 리스트에 있는 문장들을 하나씩 빼서 요소 바꾼다음 다른 문장들과 연결
