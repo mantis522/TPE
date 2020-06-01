@@ -36,7 +36,7 @@ public class Main {
 //        String pattern = "{S <RB very> *  <TO .+> <VB .+> <IN .+>}";
 //        String pattern = "{ ROOT <S <NP * <NN movie>> <VP <VBZ has>  {S <RB very> <JJ few> <JJ .+> <NNS .+> <VP <TO to> <VP <VB talk> <PP <IN about>>>>>> *} }";
 //        String pattern = "{ROOT {S {NP * <(PR.*|NN.*) .+>} {VP <VB.* .+> *} *}}"; // 1형식 문장
-        String pattern = "{S <(PR.*|NN.*) .+> <VB.* .+> * <JJS .+> <(PR.*|NN.*) .+> *}";
+        String pattern = "{S <(PR.*|NN.*) .+> <VB.* .+> * {NP * <JJ.* .+> <(PR.*|NN.*) .+>} *}";
 
 
 
