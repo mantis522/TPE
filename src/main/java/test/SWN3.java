@@ -11,7 +11,7 @@ import java.util.Vector;
  * Created by adityajoshi on 12/29/16.
  */
 public class SWN3 {
-    private String pathToSWN = "C:/Users/ruin/Desktop/data/echo-master/echo-master/lexicon/SentiWordNet_3.0.0_20130122.txt";
+    private String pathToSWN = "src/main/resources/SentiWordNet_3.0.0_20130122.txt";
     private HashMap<String,Double> dict = new HashMap<String, Double>();
 
     public SWN3() throws IOException {
@@ -79,9 +79,10 @@ public class SWN3 {
             total = dict.get(word+"#v") + total;
         return total;
     }
+
     public static void main(String[] args) throws IOException {
         SWN3 swn = new SWN3();
-        String sent = "post";
+        String sent = "I like pretty girl";
         String[] words = sent.split(" ");
         Double totScore = 0.0;
         for(String w:words){
@@ -91,6 +92,8 @@ public class SWN3 {
             totScore += swn.extract(w);
         }
         String out = "";
+
+
         if(totScore>=0.75)
             out = "strong_positive";
         else
@@ -108,7 +111,7 @@ public class SWN3 {
         else
         if(totScore<=-0.75)
             out = "strong_negative";
-        System.out.println(totScore + " " + out);
+        System.out.println(sent + " : " + totScore + " " + out);
     }
 
 }
