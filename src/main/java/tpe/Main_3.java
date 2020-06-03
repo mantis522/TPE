@@ -47,7 +47,7 @@ public class Main_3 {
 //        System.out.println(list);
         try {
 
-            FileWriter file = new FileWriter("C:/Users/ruin/Desktop/data/edited_data/train_neg_edit_2000");
+            FileWriter file = new FileWriter("D://Data/test_neg.json");
             file.write(itemlist.toJSONString());
             file.flush();
             file.close();

@@ -1,4 +1,4 @@
-package test;
+package SentiWordNet;
 
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 

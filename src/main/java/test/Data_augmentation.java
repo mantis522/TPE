@@ -25,7 +25,7 @@ public class Data_augmentation {
 
         try {
 //            Object obj = parser.parse(new FileReader("/Users/ruin/IdeaProjects/TPE/src/main/resources/train_neg_edit.json"));
-            Object obj = parser.parse(new FileReader("C:/Users/ruin/IdeaProjects/core-nlp-example/src/main/resources/train_pos_edit.json"));
+            Object obj = parser.parse(new FileReader("src/main/resources/train_pos_edit.json"));
             JSONObject jsonObject = (JSONObject) obj;
             JSONArray data = (JSONArray) jsonObject.get("items");
             for (int i = 0; i < data.size(); i++) {
@@ -100,7 +100,7 @@ public class Data_augmentation {
 //
                         try {
 
-                            FileWriter file = new FileWriter("/Users/ruin/Desktop/data/data_augmentation/test.json");
+                            FileWriter file = new FileWriter("test.json");
                             file.write(obj2.toJSONString());
                             file.flush();
                             file.close();
