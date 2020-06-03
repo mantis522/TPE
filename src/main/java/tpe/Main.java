@@ -28,7 +28,7 @@ public class Main {
 //    	String sentence = "<S <NP <PRP I>> <VP <VBP like> <NP <DT the> <NN movie>>> <. .>>";
 
 
-        String sentence = Cparser.Core_parser("Titanic is the greatest movie of the 21st Century.With great acting,directing,effects,music and generally everything. ");
+        String sentence = Cparser.Core_parser("Titanic is the greatest movie of the 21st Century.");
 //        String sentence = Cparser.Core_parser("Artists are people who draw pictures");
 //        String pattern = "<ROOT <S <NP <(PR.*|NN.*) .+>> <VP <VB.* .+> <NP <NP * <(PR.*|NN.*) .+>> <SBAR <WHNP <WP .+>> <S <VP <VBP .+> >>>>>>>";
 //        String sentence = Cparser.Core_parser("The movie has very few good points to talk about.");
@@ -36,7 +36,7 @@ public class Main {
 //        String pattern = "{S <RB very> *  <TO .+> <VB .+> <IN .+>}";
 //        String pattern = "{ ROOT <S <NP * <NN movie>> <VP <VBZ has>  {S <RB very> <JJ few> <JJ .+> <NNS .+> <VP <TO to> <VP <VB talk> <PP <IN about>>>>>> *} }";
 //        String pattern = "{ROOT {S {NP * <(PR.*|NN.*) .+>} {VP <VB.* .+> *} *}}"; // 1형식 문장
-        String pattern = "{S <(PR.*|NN.*) .+> <VB.* .+> * {NP * <JJ.* .+> <(PR.*|NN.*) .+>} *}";
+        String pattern = "{S <(PR.*|NN.*) .+> <VB.* .+> * {NP * <RB|JJ .+> <(PR.*|NN.*) .+>} *}";
 
 
 

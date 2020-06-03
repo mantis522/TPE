@@ -1,4 +1,4 @@
-package test;
+package SentiWordNet;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -7,14 +7,13 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.Vector;
-/**
- * Created by adityajoshi on 12/29/16.
- */
-public class SWN3 {
+
+public class SentiScore {
+
     private String pathToSWN = "src/main/resources/SentiWordNet_3.0.0_20130122.txt";
     private HashMap<String,Double> dict = new HashMap<String, Double>();
 
-    public SWN3() throws IOException {
+    public SentiScore() throws IOException {
         HashMap<String, Vector<Double>> _temp = new HashMap<String, Vector<Double>>();
         BufferedReader br = new BufferedReader(new FileReader(pathToSWN));
         String line = "";
@@ -81,15 +80,16 @@ public class SWN3 {
     }
 
     public static void main(String[] args) throws IOException {
-        SWN3 swn = new SWN3();
-        String sent = "I like pretty girl";
+        SentiScore sc = new SentiScore();
+        String sent = "I love you";
+
         String[] words = sent.split(" ");
         Double totScore = 0.0;
         for(String w:words){
             //w = w.replaceAll("([^a-zA-Z\\\\s])","");
-            if(swn.extract(w) == null)
+            if(sc.extract(w) == null)
                 continue;
-            totScore += swn.extract(w);
+            totScore += sc.extract(w);
         }
         String out = "";
 
@@ -112,6 +112,6 @@ public class SWN3 {
         if(totScore<=-0.75)
             out = "strong_negative";
         System.out.println(sent + " : " + totScore + " " + out);
-    }
 
+    }
 }

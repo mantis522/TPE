@@ -15,7 +15,7 @@ public class CoreNLP_Parser{
     public String normal_pattern(String text){
         Properties props = new Properties();
         CoreNLP_Parser regex = new CoreNLP_Parser();
-        props.setProperty("annotators", "tokenize,ssplit,pos,lemma,ner,parse");
+        props.setProperty("annotators", "tokenize,ssplit,pos,parse");
         // set a property for an annotator, in this case the coref annotator is being set to use the neural algorithm
         props.setProperty("coref.algorithm", "neural");
 
@@ -48,7 +48,7 @@ public class CoreNLP_Parser{
     public String Core_parser(String text){
         Properties props = new Properties();
         CoreNLP_Parser regex = new CoreNLP_Parser();
-        props.setProperty("annotators", "tokenize,ssplit,pos,lemma,ner,parse");
+        props.setProperty("annotators", "tokenize,ssplit,pos,parse");
         // set a property for an annotator, in this case the coref annotator is being set to use the neural algorithm
         props.setProperty("coref.algorithm", "neural");
 
