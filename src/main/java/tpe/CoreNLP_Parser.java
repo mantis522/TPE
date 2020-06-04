@@ -6,6 +6,7 @@ import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.trees.Tree;
 import edu.stanford.nlp.trees.TreeCoreAnnotations;
 
+import java.util.ArrayList;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -67,11 +68,47 @@ public class CoreNLP_Parser{
         return regex_tree;
     }
 
+    private static boolean isBlank(String str) {
+        int strLen; if (str == null || (strLen = str.length()) == 0) {
+            return true;
+        }
+        for (int i = 0; i < strLen; i++) {
+            if ((!Character.isWhitespace(str.charAt(i)))) {
+                return false;
+            }
+        }
+        return true;
+    }
 
 
     public static void main(String[] args) {
         CoreNLP_Parser parser = new CoreNLP_Parser();
-        System.out.println(parser.Core_parser("I like you").getClass().getName());
+        System.out.println(parser.isBlank("  "));
+
+        ArrayList<String> list = new ArrayList<>();
+        list.add("       ");
+        list.add("World");
+
+//        for(int i = 0; i < list.size(); i++){
+//            if(parser.isBlank(list.get(i)) == false){
+//                System.out.println(parser.Core_parser(list.get(i)));
+//            }
+//            else{
+//                System.out.println("이건 에러값");
+//            }
+//        }
+        System.out.println(parser.Core_parser("There are some beautiful visuals in the dream sequences, in fact if the film had decided to explore that terrain more it might have been something better."));
+//        try{
+//            for(int i = 0; i < list.size(); i++) {
+//                System.out.println(list.get(i));
+//                System.out.println(parser.Core_parser(list.get(i)));
+//            }
+//        }
+//        catch(IndexOutOfBoundsException e){
+//
+//        }
+//
+//        System.out.println(parser.Core_parser("   ").getClass().getName());
 //        System.out.println();
 //        JSON_parser parse = new JSON_parser();
 //        ArrayList<String> first = parse.json_parsing();

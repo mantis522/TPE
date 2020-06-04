@@ -24,7 +24,7 @@ public class Data_augmentation_new {
         ArrayList<List<String>> augmented_data = new ArrayList<>();
 
         try{
-            Object obj = parser.parse(new FileReader("C:/Users/ruin/Desktop/data/edited_data/train_neg_edit_9940_9959.json"));
+            Object obj = parser.parse(new FileReader("C:/Users/ruin/Desktop/data/edited_data/train_neg_edit_9940_.json"));
             JSONObject jsonObject = (JSONObject) obj;
             JSONArray array_parsed = (JSONArray) jsonObject.get("parsed_sentence");
             JSONArray array_splited = (JSONArray) jsonObject.get("splited_sentence");
@@ -40,7 +40,7 @@ public class Data_augmentation_new {
                     list1 = data3.subList(0, j);
                     list2 = data3.subList(j+1, data2.size());
 
-                    String pattern = "{S <(PR.*|NN.*) .+> <VB.* .+> * <JJ .+> <(PR.*|NN.*) .+> *}";
+                    String pattern = "{S <EX .+> {VP <VB.* .+> * <JJ .+> * <(PR.*|NN.*) .+> * <IN .+> * <(PR.*|NN.*) .+> *}*}";
                     Patterns p = new Patterns(pattern);
 
                     MakeTree tMT = new MakeTree();  // ÇÊ¼ö

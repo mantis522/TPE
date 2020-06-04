@@ -246,7 +246,7 @@ public class TreeJPanel extends JPanel {
         CoreNLP_Parser parser = new CoreNLP_Parser();
 
 
-        String ptbTreeString = parser.Core_parser("He just waltzed off with my car!");
+        String ptbTreeString = parser.Core_parser("There are some beautiful visuals in the dream sequences, in fact if the film had decided to explore that terrain more it might have been something better.");
 //        String ptbTreeString = "(ROOT (NP (NP (NP (DT A) (NN blog) (NN post)) (VP (VBG using) (NP (NNP Stanford) (NNP CoreNLP) (NN Server)))) (. .)))";
 //        System.out.println(parser.Core_parser(sent));
 

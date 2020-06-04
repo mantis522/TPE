@@ -81,7 +81,7 @@ public class SentiScore {
 
     public static void main(String[] args) throws IOException {
         SentiScore sc = new SentiScore();
-        String sent = "I love you";
+        String sent = "There are beautiful visuals in dream in fact";
 
         String[] words = sent.split(" ");
         Double totScore = 0.0;
