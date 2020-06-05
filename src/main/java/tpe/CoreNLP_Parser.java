@@ -68,7 +68,8 @@ public class CoreNLP_Parser{
         return regex_tree;
     }
 
-    private static boolean isBlank(String str) {
+    // String이 공백일 경우는 true 리턴
+    public static boolean isBlank(String str) {
         int strLen; if (str == null || (strLen = str.length()) == 0) {
             return true;
         }
@@ -86,18 +87,21 @@ public class CoreNLP_Parser{
         System.out.println(parser.isBlank("  "));
 
         ArrayList<String> list = new ArrayList<>();
+        ArrayList<String> test = new ArrayList<>();
         list.add("       ");
         list.add("World");
 
-//        for(int i = 0; i < list.size(); i++){
-//            if(parser.isBlank(list.get(i)) == false){
-//                System.out.println(parser.Core_parser(list.get(i)));
-//            }
-//            else{
-//                System.out.println("이건 에러값");
-//            }
-//        }
-        System.out.println(parser.Core_parser("There are some beautiful visuals in the dream sequences, in fact if the film had decided to explore that terrain more it might have been something better."));
+        for(int i = 0; i < list.size(); i++){
+            if(parser.isBlank(list.get(i)) == false){
+                test.add(parser.Core_parser(list.get(i)));
+            }
+            else{
+                test.add("space");
+            }
+        }
+
+        System.out.println(test);
+
 //        try{
 //            for(int i = 0; i < list.size(); i++) {
 //                System.out.println(list.get(i));
@@ -105,7 +109,7 @@ public class CoreNLP_Parser{
 //            }
 //        }
 //        catch(IndexOutOfBoundsException e){
-//
+//            System.out.println(e);
 //        }
 //
 //        System.out.println(parser.Core_parser("   ").getClass().getName());

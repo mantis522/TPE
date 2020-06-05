@@ -1,0 +1,21 @@
+String pattern = "{ROOT {S {NP * <(PR.*|NN.*) .+>} {VP <VB.* .+> *} *}}"; // 1형식 문장
+
+String pattern = "{ROOT {S {NP <(PR.*|NN.*) .+>}* {VP <VB.* .+> {NP <(PR.*|NN.*) .+> *}*}*}*}"; // 3형식 문장 ->
+
+String pattern = "{ROOT {S {NP <(PR.*|NN.*) .+>} {VP <VB.* .+> * <NP * <(PR.*|NN.*) .+>> * <NP * <(PR.*|NN.*) .+>>}}}"; // 4형식 문장(좀 느슨)
+
+String pattern = "{ROOT {S {NP <(PR.*|NN.*) .+>} * {VP <VB.* .+> * <NP * <(PR.*|NN.*) .+> * > * <NP * <(PR.*|NN.*) .+> *>} *}*}"; // 4형식 문장(와일드 카드 때문에 더 느슨) ->
+
+String pattern = "{ROOT {S {NP <(PR.*|NN.*) .+>} * {VP <VB.* .+> * {S {NP <(PR.*|NN.*) .+> * } * {ADJP <JJ .+> *}*}*}*}*}"; // 5형식 문장(형용사가 올때) ->
+
+{S <EX .+> * <VB.* .+> * <JJ .+> * <(PR.*|NN.*) .+> * <IN .+> * <(PR.*|NN.*) .+> * <(PR.*|NN.*) .+> *} // 요건 좀 느슨한 There is ~ 패턴 ->
+
+{S <EX .+> {VP <VB.* .+> * <JJ .+> * <(PR.*|NN.*) .+> * <IN .+> * <(PR.*|NN.*) .+> * <(PR.*|NN.*) .+> *}*} // 요건 좀 엄격한 There is ~ 패턴
+
+{S <EX .+> {VP <VB.* .+> * <JJ .+> * <(PR.*|NN.*) .+> * <IN .+> * <(PR.*|NN.*) .+> * <(PR.*|NN.*) .+> *  {S <(PR.*|NN.*) .+> * <VB.* .+> <RB .+> * {PP <IN .+> * <(PR.*|NN.*|DT) .+> * <(PR.*|NN.*) .+>}*}*}*} // 일치되기는 하는데 너무 엄격해서 거의 안됨
+
+{S * <(PR.*|NN.*) .+> {VP <VB.* .+> * <(PR.*|NN.*) .+> {PP <IN .+> * <(PR.*|NN.*) .+> * {PP <IN .+> * <(PR.*|NN.*) .+> <(PR.*|NN.*) .+>} *}*} *} // -> 왜 중복된 문장이 나오는지 모르겠지만 We remember those persons for the rest of our lives. 에서 추출하는
+
+{S <(PR.*|NN.*) .+> <VB.* .+> * <JJ .+> <(PR.*|NN.*) .+> *} // 간단하게 명사 수식하는 형용사 ->
+
+(ROOT (S (NP (NNP Titanic)) (VP (VBZ is) (NP (NP (NP (DT the) (JJS greatest) (NN movie)) (PP (IN of) (NP (DT the) (JJ 21st) (NN Century.With) (JJ great) (NN acting))) (, ,) (VP (VBG directing))) (, ,) (NP (NP (NNS effects)) (, ,) (NP (NN music)) (CC and) (NP (RB generally) (NN everything))))) (. .)))

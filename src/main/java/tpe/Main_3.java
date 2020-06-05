@@ -32,9 +32,14 @@ public class Main_3 {
 //            obj.put("splited_sentence", list);
 //            System.out.println(splited_origin);
             for (int j = 0; j < splited_origin.size(); j++){
-//                System.out.println(splited_origin.get(j));
-                list.add(splited_origin.get(j));
-                list2.add(parser.Core_parser(splited_origin.get(j)));
+//                if(parser.isBlank(splited_origin.get(j)) == false){
+                    list.add(splited_origin.get(j));
+                    list2.add(parser.Core_parser(splited_origin.get(j)));
+//                }
+//                else{
+//                    list.add(splited_origin.get(j));
+//                    list2.add("space");
+//                }
             }
             obj.put("splited_sentence", list);
             obj.put("parsed_sentence", list2);
@@ -47,7 +52,7 @@ public class Main_3 {
 //        System.out.println(list);
         try {
 
-            FileWriter file = new FileWriter("D://Data/test_neg.json");
+            FileWriter file = new FileWriter("src/main/resources/test_neg.json");
             file.write(itemlist.toJSONString());
             file.flush();
             file.close();
