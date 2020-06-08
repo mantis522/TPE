@@ -11,21 +11,13 @@ public class pos {
     public static void main(String[] args) {
 
         StanfordCoreNLP stanfordCoreNLP = Pipeline.getPipeline();
-
         String text = "there is cool scene from skyscraper miles";
-
         CoreDocument coreDocument = new CoreDocument(text);
-
         stanfordCoreNLP.annotate(coreDocument);
-
         List<CoreLabel> coreLabelList = coreDocument.tokens();
-
         for(CoreLabel coreLabel : coreLabelList) {
-
             String pos = coreLabel.get(CoreAnnotations.PartOfSpeechAnnotation.class);
             System.out.println(coreLabel.originalText() + " = "+ pos);
         }
-
-
     }
 }

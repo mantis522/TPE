@@ -19,7 +19,7 @@ public class JSON_parser {
 
         try {
             // myJson.json파일을 읽어와 Object로 파싱
-            Object obj = parser.parse(new FileReader("src/main/resources/test_neg_full.json"));
+            Object obj = parser.parse(new FileReader("src/main/resources/train_pos_full.json"));
             JSONObject jsonObject = (JSONObject) obj;
             JSONArray data = (JSONArray) jsonObject.get("data");
             for(int i = 0; i < data.size(); i++){

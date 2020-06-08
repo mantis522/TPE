@@ -81,7 +81,7 @@ public class SentiScore {
 
     public static void main(String[] args) throws IOException {
         SentiScore sc = new SentiScore();
-        String sent = "There are beautiful visuals in dream in fact";
+        String sent = "There have recent years for example There have recent years for example";
 
         String[] words = sent.split(" ");
         Double totScore = 0.0;
@@ -93,24 +93,24 @@ public class SentiScore {
         }
         String out = "";
 
+//        if(totScore>=0.75)
+//            out = "strong_positive";
+//        else
+//        if(totScore > 0.25 && totScore>=0.5)
+//            out = "positive";
+//        else
+//        if(totScore > 0 && totScore>=0.25)
+//            out = "weak_positive";
+//        else
+//        if(totScore < 0 && totScore>=-0.25)
+//            out = "weak_negative";
+//        else
+//        if(totScore < -0.25 && totScore>=-0.5)
+//            out = "negative";
+//        else
+//        if(totScore<=-0.75)
+//            out = "strong_negative";
 
-        if(totScore>=0.75)
-            out = "strong_positive";
-        else
-        if(totScore > 0.25 && totScore>=0.5)
-            out = "positive";
-        else
-        if(totScore > 0 && totScore>=0.25)
-            out = "weak_positive";
-        else
-        if(totScore < 0 && totScore>=-0.25)
-            out = "weak_negative";
-        else
-        if(totScore < -0.25 && totScore>=-0.5)
-            out = "negative";
-        else
-        if(totScore<=-0.75)
-            out = "strong_negative";
         System.out.println(sent + " : " + totScore + " " + out);
 
     }

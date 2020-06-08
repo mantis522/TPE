@@ -11,7 +11,6 @@ import tpe.TreeNode;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -80,8 +79,12 @@ public class Data_augmentation_new {
                             fruits.add(t.getIthNode(Integer.parseInt(rel2[1])).value);
                         }
                     }
+
                     Collections.reverse(fruits);
+
+
                     String sum_text = String.join(" ",fruits);
+
                     if(sum_text.length() > 2) {
                         String result_text = sum_text;
                         List<String> newList = new ArrayList<String>(list1);
@@ -92,16 +95,16 @@ public class Data_augmentation_new {
                         obj2.put("augmented_text", augmented_data);
                         System.out.println(result_text);
 //
-                        try {
-
-                            FileWriter file = new FileWriter("/Users/ruin/Desktop/data/data_augmentation2/neg/41_60_JJ_NN_simple.json");
-                            file.write(obj2.toJSONString());
-                            file.flush();
-                            file.close();
-
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+//                        try {
+//
+//                            FileWriter file = new FileWriter("/Users/ruin/Desktop/data/data_augmentation2/neg/41_60_JJ_NN_simple.json");
+//                            file.write(obj2.toJSONString());
+//                            file.flush();
+//                            file.close();
+//
+//                        } catch (IOException e) {
+//                            e.printStackTrace();
+//                        }
                     }
                 }
 
