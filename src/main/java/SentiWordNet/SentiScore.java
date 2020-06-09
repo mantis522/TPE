@@ -81,7 +81,10 @@ public class SentiScore {
 
     public static void main(String[] args) throws IOException {
         SentiScore sc = new SentiScore();
-        String sent = "There have recent years for example There have recent years for example";
+        String sent = "What a beautiful world";
+        String sent2 = "What a world";
+
+
 
         String[] words = sent.split(" ");
         Double totScore = 0.0;
@@ -92,6 +95,26 @@ public class SentiScore {
             totScore += sc.extract(w);
         }
         String out = "";
+
+
+        String[] words2 = sent2.split(" ");
+        Double totScore2 = 0.0;
+        for(String s:words2){
+            if(sc.extract(s) == null)
+                continue;
+            totScore2 += sc.extract(s);
+        }
+
+        String result_score = totScore > 0? "pos" : "neg";
+        String result_score2 = totScore2 > 0? "pos" : "neg";
+        String final_text = "";
+
+        // 극성이 변하면 삭제 X
+        if(result_score.equals(result_score2)){
+            final_text = sent2;
+        }else{
+            final_text = sent;
+        }
 
 //        if(totScore>=0.75)
 //            out = "strong_positive";
@@ -112,6 +135,8 @@ public class SentiScore {
 //            out = "strong_negative";
 
         System.out.println(sent + " : " + totScore + " " + out);
-
+        System.out.println(result_score2);
+        System.out.println(sent2 + " : " + totScore2);
+        System.out.println(final_text);
     }
 }

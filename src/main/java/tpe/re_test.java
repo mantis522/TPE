@@ -29,6 +29,11 @@ public class re_test {
         return result2;
     }
 
+    public String replaced3(String content, String yoso){
+        String match = yoso;
+        content = content.replaceAll(match, "");
+        return content;
+    }
 
     public static void main(String[] args) {
         String content = "<ROOT <S <ADVP <RB Unfortunately>> <NP <PRP it>> <VP <VBZ stays> <NP <JJ absurd> <DT the> <JJ WHOLE> <NN time>> <PP <IN with> <NP <DT no> <JJ general> <NN narrative>>> <S <ADVP <RB eventually>> <VP <VBG making> <NP <PRP it>> <ADVP <RB just>> <ADVP <RB too> <JJ off>> <S <VP <VBG putting>>>>>> <. .>>>";

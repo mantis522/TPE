@@ -139,6 +139,7 @@ public class Main {
 //        ArrayList<PairMatched> list = null;
 //        list = p.patternMatchingToList(t);
 //        System.out.println(fruits);
+        System.out.println(fruits);
         String sum_text = String.join(" ",fruits);
         System.out.println(sum_text);
 
