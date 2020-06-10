@@ -28,7 +28,7 @@ public class Main {
 //    	String sentence = "<S <NP <PRP I>> <VP <VBP like> <NP <DT the> <NN movie>>> <. .>>";
 
 
-        String sentence = Cparser.Core_parser("Titanic is the greatest movie of the 21st Century.");
+        String sentence = "<ROOT <S <NP <PRP I>> <VP <VBD expected> <NP <NP <DT a> <NN comedy>> <PP <IN like> <NP <DT the> <JJ Big> <NN Mama> <NNS movies>>>>> <. .>>>";
 //        String sentence = Cparser.Core_parser("Artists are people who draw pictures");
 //        String pattern = "<ROOT <S <NP <(PR.*|NN.*) .+>> <VP <VB.* .+> <NP <NP * <(PR.*|NN.*) .+>> <SBAR <WHNP <WP .+>> <S <VP <VBP .+> >>>>>>>";
 //        String sentence = Cparser.Core_parser("The movie has very few good points to talk about.");
@@ -36,8 +36,8 @@ public class Main {
 //        String pattern = "{S <RB very> *  <TO .+> <VB .+> <IN .+>}";
 //        String pattern = "{ ROOT <S <NP * <NN movie>> <VP <VBZ has>  {S <RB very> <JJ few> <JJ .+> <NNS .+> <VP <TO to> <VP <VB talk> <PP <IN about>>>>>> *} }";
 //        String pattern = "{ROOT {S {NP * <(PR.*|NN.*) .+>} {VP <VB.* .+> *} *}}"; // 1형식 문장
-        String pattern = "{S <(PR.*|NN.*) .+> <VB.* .+> * {NP * <RB|JJ .+> <(PR.*|NN.*) .+>} *}";
-
+//        String pattern = "{S <(PR.*|NN.*) .+> <VB.* .+> * {NP * <RB|JJ .+> <(PR.*|NN.*) .+>} *}";
+        String pattern = "{S * {NP * <NN.*|PR.* .+> *} {VP * <VB.* .+> {NP * <NP * <NN.* .+> *> * {PP * <IN .+> * <NP * <JJ.* .+> * <NN.* .+> *>*}*}*} *}";
 
 
 
@@ -139,7 +139,7 @@ public class Main {
 //        ArrayList<PairMatched> list = null;
 //        list = p.patternMatchingToList(t);
 //        System.out.println(fruits);
-        System.out.println(fruits);
+//        System.out.println(fruits);
         String sum_text = String.join(" ",fruits);
         System.out.println(sum_text);
 

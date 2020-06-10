@@ -46,7 +46,7 @@ public class Data_augmentation {
 
 
                     /* /////////// 패턴 관련 부분 //////////////// */
-                    String pattern = "{ROOT {S {NP <(PR.*|NN.*) .+>} * {VP <VB.* .+> * {S {NP <(PR.*|NN.*) .+> * } * {ADJP <JJ .+> *}*}*}*}*}";
+                    String pattern = "{S * {NP * <NN.*|PR.* .+> *} * {VP * <VB.* .+> * {NP * <NP * <NN.* .+> *> * {PP * <IN .+> * <NP * <JJ.* .+> * <NN.* .+> *>*}*}*} *}";
                     Patterns p = new Patterns(pattern);
 
                     MakeTree tMT = new MakeTree();  // 필수

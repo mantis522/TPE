@@ -25,7 +25,7 @@ public class Data_augmentation_neo {
 
 
         try{
-            Object obj = parser.parse(new FileReader("src/main/data/train_neg_edit_full.json"));
+            Object obj = parser.parse(new FileReader("src/main/data/train_pos_edit_full.json"));
             JSONObject jsonObject = (JSONObject) obj;
             JSONArray array_parsed = (JSONArray) jsonObject.get("parsed_sentence");
             JSONArray array_splited = (JSONArray) jsonObject.get("splited_sentence");
@@ -44,7 +44,7 @@ public class Data_augmentation_neo {
                     // list3이 TPE를 뽑아내는 문장
 //                    System.out.println(list3);
 
-                    String pattern = "{S <EX .+> {VP <VB.* .+> * <JJ .+> * <(PR.*|NN.*) .+> * <IN .+> * <(PR.*|NN.*) .+> *}*}";
+                    String pattern = "{S * {NP * <NN.*|PR.* .+> *} {VP * <VB.* .+> {NP * <NP * <NN.* .+> *> * {PP * <IN .+> * <NP * <JJ.* .+> * <NN.* .+> *>*}*}*} *}";
                     Patterns p = new Patterns(pattern);
 
                     MakeTree tMT = new MakeTree();  // 필수
@@ -113,7 +113,7 @@ public class Data_augmentation_neo {
                                 newList.add(sum_melon);
                                 newList.addAll(list2);
                                 augmented_data.add(newList);
-                                obj2.put("label", 0);
+                                obj2.put("label", 1);
                                 obj2.put("augmented_text", augmented_data);
 
                             }
@@ -157,7 +157,7 @@ public class Data_augmentation_neo {
                                 newList.add(output_sent);
                                 newList.addAll(list2);
                                 augmented_data2.add(newList);
-                                obj2.put("label2", 0);
+                                obj2.put("label2", 1);
                                 obj2.put("augmented_text2", augmented_data2);
                             }
 //                            System.out.println("------------");
@@ -197,7 +197,7 @@ public class Data_augmentation_neo {
                                 newList.add(output_sent);
                                 newList.addAll(list2);
                                 augmented_data3.add(newList);
-                                obj2.put("label3", 0);
+                                obj2.put("label3", 1);
                                 obj2.put("augmented_text3", augmented_data3);
                             }
 //                            System.out.println("------------");
@@ -215,7 +215,7 @@ public class Data_augmentation_neo {
 
                         try {
 
-                            FileWriter file = new FileWriter("src/main/data/EX_neg.json");
+                            FileWriter file = new FileWriter("src/main/data/meals_pos.json");
                             file.write(obj2.toJSONString());
                             file.flush();
                             file.close();
