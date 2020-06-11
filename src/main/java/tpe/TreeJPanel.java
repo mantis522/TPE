@@ -246,8 +246,8 @@ public class TreeJPanel extends JPanel {
         CoreNLP_Parser parser = new CoreNLP_Parser();
 
 
-        String ptbTreeString = parser.Core_parser("There are some beautiful visuals in the dream sequences, in fact if the film had decided to explore that terrain more it might have been something better.");
-//        String ptbTreeString = "(ROOT (NP (NP (NP (DT A) (NN blog) (NN post)) (VP (VBG using) (NP (NNP Stanford) (NNP CoreNLP) (NN Server)))) (. .)))";
+//        String ptbTreeString = parser.Core_parser("There are some beautiful visuals in the dream sequences, in fact if the film had decided to explore that terrain more it might have been something better.");
+        String ptbTreeString = "<ROOT <S <S <NP <EX There>> <VP <VBP are> <NP <NP <DT the> <JJ obvious> <JJ large> <JJ political> <NNS differences>> <PP <IN between> <NP <NP <NNP Oz> <NN culture>> <CC and> <NP <JJ Iranian> <NN culture>>>>>>> <, ,> <CC but> <S <NP <PRP I>> <VP <VBD found> <NP <NP <DT the> <ADJP <RBR more> <JJ subtle>> <NNS differences>> <PP <IN between> <NP <DT the> <NNS characters>>>> <, ,> <SBAR <IN that> <S <NP <DT this> <NN film>> <VP <VBZ fleshes> <PRT <RP out>> <PP <ADVP <RB so> <RB successfully>> <IN on> <NP <NN screen>>> <, ,> <ADJP <RB extremely> <JJ fascinating>>>>>>> <. .>>>";
 //        System.out.println(parser.Core_parser(sent));
 
         //         String ptbTreeString = "(ROOT (S (NP (DT This)) (VP (VBZ is) (RB not) (NP (NP (DT a) (NN film)) (SBAR (S (NP (PRP you)) (VP (MD can) (ADVP (RB really)) (VP (VB analyse) (ADVP (RB separately)) (SBAR (IN from) (S (NP (PRP it)) (VP (VBZ is) (NP (NN production))))))))))) (. .)))\n";
