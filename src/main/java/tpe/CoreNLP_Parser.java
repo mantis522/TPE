@@ -6,7 +6,6 @@ import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.trees.Tree;
 import edu.stanford.nlp.trees.TreeCoreAnnotations;
 
-import java.util.ArrayList;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -84,23 +83,23 @@ public class CoreNLP_Parser{
 
     public static void main(String[] args) {
         CoreNLP_Parser parser = new CoreNLP_Parser();
-        System.out.println(parser.isBlank("  "));
-
-        ArrayList<String> list = new ArrayList<>();
-        ArrayList<String> test = new ArrayList<>();
-        list.add("       ");
-        list.add("World");
-
-        for(int i = 0; i < list.size(); i++){
-            if(parser.isBlank(list.get(i)) == false){
-                test.add(parser.Core_parser(list.get(i)));
-            }
-            else{
-                test.add("space");
-            }
-        }
-
-        System.out.println(test);
+//        System.out.println(parser.isBlank("  "));
+        System.out.println(parser.Core_parser("It was boring, overdramatic, and the funny parts were too far in between to make up the slack."));
+//        ArrayList<String> list = new ArrayList<>();
+//        ArrayList<String> test = new ArrayList<>();
+//        list.add("       ");
+//        list.add("World");
+//
+//        for(int i = 0; i < list.size(); i++){
+//            if(parser.isBlank(list.get(i)) == false){
+//                test.add(parser.Core_parser(list.get(i)));
+//            }
+//            else{
+//                test.add("space");
+//            }
+//        }
+//
+//        System.out.println(test);
 
 //        try{
 //            for(int i = 0; i < list.size(); i++) {
