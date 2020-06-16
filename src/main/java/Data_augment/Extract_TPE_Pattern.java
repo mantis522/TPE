@@ -17,36 +17,31 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Data_augmentation {
+public class Extract_TPE_Pattern {
     public static void main(String[] args) {
         JSONParser parser = new JSONParser();
         JSONObject obj2 = new JSONObject();
         ArrayList<List<String>> augmented_data = new ArrayList<>();
 
-        try {
-//            Object obj = parser.parse(new FileReader("/Users/ruin/IdeaProjects/TPE/src/main/resources/train_neg_edit.json"));
-            Object obj = parser.parse(new FileReader("src/main/data/train_neg_edit_9940_9959.json"));
+        try{
+            Object obj = parser.parse(new FileReader("C:/Users/ruin/Desktop/data/edited_data/train_neg_edit_9940_9959.json"));
             JSONObject jsonObject = (JSONObject) obj;
-            JSONArray data = (JSONArray) jsonObject.get("items");
-            for (int i = 0; i < data.size(); i++) {
-                JSONObject result = (JSONObject) data.get(i);
-                JSONArray data2 = (JSONArray) result.get("parsed_sentence");
-                JSONArray data3 = (JSONArray) result.get("splited_sentence");
-
-//                System.out.println(data2);
-
-                for(int j = 0; j < data2.size(); j++) {
+            JSONArray array_parsed = (JSONArray) jsonObject.get("parsed_sentence");
+            JSONArray array_splited = (JSONArray) jsonObject.get("splited_sentence");
+            for (int i = 0; i < array_parsed.size(); i++) {
+                JSONArray data2 = (JSONArray) array_parsed.get(i);
+                JSONArray data3 = (JSONArray) array_splited.get(i);
+                for (int j = 0; j < data2.size(); j++) {
                     String sentence = (String) data2.get(j);
                     String origin_sentence = (String) data3.get(j);
-                    List<String> list1 = new ArrayList<String>();
-                    List<String> list2 = new ArrayList<String>();
-                    list1 = data3.subList(0, j);
-                    list2 = data3.subList(j+1, data2.size());
-//                    List<String> newList = new ArrayList<String>(list1);
 
+                    // list3이 TPE를 뽑아내는 문장
+//                    System.out.println(list3);
+//                    System.out.println("첫번째 : " + list1);
+//                    System.out.println("두번째 : " + list3);
+//                    System.out.println("세번째 : " + list2);
 
-                    /* /////////// 패턴 관련 부분 //////////////// */
-                    String pattern = "{S * {NP * <NN.*|PR.* .+> *} * {VP * <VB.* .+> * {NP * <NP * <NN.* .+> *> * {PP * <IN .+> * <NP * <JJ.* .+> * <NN.* .+> *>*}*}*} *}";
+                    String pattern = "{S <EX .+> {VP <VB.* .+> * <JJ .+> * <(PR.*|NN.*) .+> * <IN .+> * <(PR.*|NN.*) .+> *}*}";
                     Patterns p = new Patterns(pattern);
 
                     MakeTree tMT = new MakeTree();  // 필수
@@ -86,21 +81,23 @@ public class Data_augmentation {
                             fruits.add(t.getIthNode(Integer.parseInt(rel2[1])).value);
                         }
                     }
+
                     Collections.reverse(fruits);
+
+
                     String sum_text = String.join(" ",fruits);
+
                     if(sum_text.length() > 2) {
                         String result_text = sum_text;
-                        List<String> newList = new ArrayList<String>(list1);
-                        newList.add(result_text);
-                        newList.addAll(list2);
-                        augmented_data.add(newList);
+                        System.out.println(result_text);
+                        
                         obj2.put("label", 0);
                         obj2.put("augmented_text", augmented_data);
-                        System.out.println(result_text);
-//
+//                        System.out.println(result_text);
+
                         try {
 
-                            FileWriter file = new FileWriter("test.json");
+                            FileWriter file = new FileWriter("/Users/ruin/Desktop/data/data_augmentation2/neg/test.json");
                             file.write(obj2.toJSONString());
                             file.flush();
                             file.close();
@@ -109,12 +106,11 @@ public class Data_augmentation {
                             e.printStackTrace();
                         }
                     }
-
                 }
 
-            }
 
-            // 리스트에 있는 문장들을 하나씩 빼서 요소 바꾼다음 다른 문장들과 연결
+            }
+//            System.out.println(augmented_data);
 
 
 
@@ -125,5 +121,6 @@ public class Data_augmentation {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 }
