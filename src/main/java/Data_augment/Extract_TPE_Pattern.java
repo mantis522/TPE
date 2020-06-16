@@ -15,13 +15,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 public class Extract_TPE_Pattern {
     public static void main(String[] args) {
         JSONParser parser = new JSONParser();
         JSONObject obj2 = new JSONObject();
-        ArrayList<List<String>> augmented_data = new ArrayList<>();
+        ArrayList<String> augmented_data = new ArrayList<>();
 
         try{
             Object obj = parser.parse(new FileReader("C:/Users/ruin/Desktop/data/edited_data/train_neg_edit_9940_9959.json"));
@@ -90,14 +89,19 @@ public class Extract_TPE_Pattern {
                     if(sum_text.length() > 2) {
                         String result_text = sum_text;
                         System.out.println(result_text);
-                        
-                        obj2.put("label", 0);
+                        augmented_data.add(result_text);
+//                        obj2.put("label", 0);
                         obj2.put("augmented_text", augmented_data);
 //                        System.out.println(result_text);
+                    }
+                    else{
 
+                        augmented_data.add(null);
+                        obj2.put("augmented_text", augmented_data);
+                    }
                         try {
 
-                            FileWriter file = new FileWriter("/Users/ruin/Desktop/data/data_augmentation2/neg/test.json");
+                            FileWriter file = new FileWriter("/Users/ruin/Desktop/data/data_augmentation2/neg/test3.json");
                             file.write(obj2.toJSONString());
                             file.flush();
                             file.close();
@@ -105,7 +109,7 @@ public class Extract_TPE_Pattern {
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-                    }
+
                 }
 
 
