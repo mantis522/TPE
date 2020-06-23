@@ -10,9 +10,11 @@ import java.util.Properties;
 
 public class BasicPipelineExample {
 
-    public static String text = "It was boring, overdramatic, and the funny parts were too far in between to make up the slack.";
+    public static String text = "It was boring, overdramatic, and the funny parts were too far in between to make up the slack.\n";
+
 
     public static void main(String[] args) {
+        long start = System.currentTimeMillis();
         // set up pipeline properties
         Properties props = new Properties();
         // set the list of annotators to run
@@ -32,8 +34,9 @@ public class BasicPipelineExample {
         SemanticGraph dependencyParse = sentence.dependencyParse();
         System.out.println("Example: " + text);
         System.out.println(dependencyParse);
-        System.out.println("--------------------------------");
-        System.out.println(dependencyParse);
+        long end = System.currentTimeMillis();
+
+        System.out.println( "실행 시간 : " + ( end - start )/1000.0 );
 
     }
 

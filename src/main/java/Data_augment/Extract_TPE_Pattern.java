@@ -15,12 +15,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class Extract_TPE_Pattern {
     public static void main(String[] args) {
         JSONParser parser = new JSONParser();
         JSONObject obj2 = new JSONObject();
-        ArrayList<String> augmented_data = new ArrayList<>();
+//        ArrayList<String> augmented_data = new ArrayList<>();
+        ArrayList<List<String>> augmented_data2 = new ArrayList<>();
 
         try{
             Object obj = parser.parse(new FileReader("C:/Users/ruin/Desktop/data/edited_data/train_neg_edit_9940_9959.json"));
@@ -28,6 +30,7 @@ public class Extract_TPE_Pattern {
             JSONArray array_parsed = (JSONArray) jsonObject.get("parsed_sentence");
             JSONArray array_splited = (JSONArray) jsonObject.get("splited_sentence");
             for (int i = 0; i < array_parsed.size(); i++) {
+                ArrayList<String> augmented_data = new ArrayList<>();
                 JSONArray data2 = (JSONArray) array_parsed.get(i);
                 JSONArray data3 = (JSONArray) array_splited.get(i);
                 for (int j = 0; j < data2.size(); j++) {
@@ -91,32 +94,39 @@ public class Extract_TPE_Pattern {
                         System.out.println(result_text);
                         augmented_data.add(result_text);
 //                        obj2.put("label", 0);
-                        obj2.put("augmented_text", augmented_data);
+//                        obj2.put("augmented_text", augmented_data2);
 //                        System.out.println(result_text);
                     }
                     else{
-
+//                        System.out.println("null");
                         augmented_data.add(null);
-                        obj2.put("augmented_text", augmented_data);
+//                        obj2.put("augmented_text", augmented_data2);
                     }
-                        try {
+//
+//                        augmented_data2.add(augmented_data);
+//                        obj2.put("augmented_text", augmented_data2);
 
-                            FileWriter file = new FileWriter("/Users/ruin/Desktop/data/data_augmentation2/neg/test3.json");
-                            file.write(obj2.toJSONString());
-                            file.flush();
-                            file.close();
-
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
 
                 }
+                augmented_data2.add(augmented_data);
 
-
+//                System.out.println(augmented_data2);
+//                System.out.println();
             }
-//            System.out.println(augmented_data);
 
+//            obj2.put("augmented_text", augmented_data2);
+//            obj2.put("gizon", jsonObject);
+            jsonObject.put("augmented_text", augmented_data2);
+            try {
 
+                FileWriter file = new FileWriter("/Users/ruin/Desktop/data/data_augmentation2/neg/test3.json");
+                file.write(jsonObject.toJSONString());
+                file.flush();
+                file.close();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
         } catch (ParseException e) {
             e.printStackTrace();
