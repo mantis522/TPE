@@ -25,7 +25,7 @@ public class Extract_TPE_Pattern {
         ArrayList<List<String>> augmented_data2 = new ArrayList<>();
 
         try{
-            Object obj = parser.parse(new FileReader("C:/Users/ruin/Desktop/data/edited_data/train_neg_edit_9940_9959.json"));
+            Object obj = parser.parse(new FileReader("C:/Users/ruin/Desktop/data/edited_data/train_neg_edit_full.json"));
             JSONObject jsonObject = (JSONObject) obj;
             JSONArray array_parsed = (JSONArray) jsonObject.get("parsed_sentence");
             JSONArray array_splited = (JSONArray) jsonObject.get("splited_sentence");
@@ -43,7 +43,7 @@ public class Extract_TPE_Pattern {
 //                    System.out.println("두번째 : " + list3);
 //                    System.out.println("세번째 : " + list2);
 
-                    String pattern = "{S <EX .+> {VP <VB.* .+> * <JJ .+> * <(PR.*|NN.*) .+> * <IN .+> * <(PR.*|NN.*) .+> *}*}";
+                    String pattern = "{S <EX .+> {VP <VB.* .+> * <JJ .+> * <(PR.*|NN.*) .+> * <IN .+> * <(PR.*|NN.*) .+> * <(PR.*|NN.*) .+> *  {S <(PR.*|NN.*) .+> * <VB.* .+> <RB .+> * {PP <IN .+> * <(PR.*|NN.*|DT) .+> * <(PR.*|NN.*) .+>}*}*}*}";
                     Patterns p = new Patterns(pattern);
 
                     MakeTree tMT = new MakeTree();  // 필수
@@ -119,7 +119,7 @@ public class Extract_TPE_Pattern {
             jsonObject.put("augmented_text", augmented_data2);
             try {
 
-                FileWriter file = new FileWriter("/Users/ruin/Desktop/data/data_augmentation2/neg/test3.json");
+                FileWriter file = new FileWriter("C:/Users/ruin/Desktop/data/json_data/TPE_Pattern/long_neg.json");
                 file.write(jsonObject.toJSONString());
                 file.flush();
                 file.close();
